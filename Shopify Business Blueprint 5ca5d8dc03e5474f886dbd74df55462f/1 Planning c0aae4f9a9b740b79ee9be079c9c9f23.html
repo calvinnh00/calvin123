@@ -1,0 +1,707 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>1: Planning</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c0aae4f9-a9b7-40b7-9ee9-be079c9c9f23" class="page sans"><header><img class="page-cover-image" src="1%20Planning%20c0aae4f9a9b740b79ee9be079c9c9f23/Shopify_BBNotionTemplate_Cover_V2.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">✏️</span></div><h1 class="page-title">1: Planning</h1></header><div class="page-body"><p id="ac38e872-b864-487d-aac2-ac0b3847e8b8" class="block-color-blue"><strong>Section 1</strong> // ●○○○
+<strong>Quick Links:</strong> <a href="2%20Framing%204546453452d44a839d3813adb0f91778.html"><span class="icon">🪜</span>2: Framing</a> <a href="3%20Building%204db6f225274e40be813e505b8f43c6e6.html"><span class="icon">🏗️</span>3: Building</a> <a href="4%20Growing%2085de54d6666f4d78821c08e29c9a7008.html"><span class="icon">🌳</span>4: Growing</a> <mark class="highlight-blue">| Dashboard:</mark><mark class="highlight-yellow"> </mark><mark class="highlight-yellow"><a href="../Shopify%20Business%20Blueprint%205ca5d8dc03e5474f886dbd74df55462f.html"><img class="icon" src="icons8-online-shop-50%201.png"/>Shopify Business Blueprint</a></mark><mark class="highlight-yellow"> </mark></p><div id="4769eb39-271a-467d-87ef-75551946784f" class="column-list"><div id="e06680b3-117b-47a8-9f83-bf5b14d1c6d2" style="width:43.75%" class="column"><figure id="aaec69f1-0c5f-473a-ab3d-ebd6a36a2d18" class="image"><a href="1%20Planning%20c0aae4f9a9b740b79ee9be079c9c9f23/Shopify_BBNotionTemplate_1_Planning_Widget.jpg"><img style="width:3950px" src="1%20Planning%20c0aae4f9a9b740b79ee9be079c9c9f23/Shopify_BBNotionTemplate_1_Planning_Widget.jpg"/></a></figure></div><div id="919e185e-c90d-4a61-84ca-aa0b87523ed6" style="width:56.25%" class="column"><p id="6d43913b-0ccc-4cdf-944e-9f6d8ed06043" class="block-color-blue"><strong>Table of Contents</strong></p><nav id="5ec46ee1-4e4f-49d1-b6fe-2cf05313efde" class="block-color-blue table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0cd265c4-c87f-4b01-b6b9-51a58355f00f">1. Define your “why”</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ae3d0816-802b-46b4-945f-06bef50793ff">2. <strong>Feeling stuck and still haven’t found your “why” yet?</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ec01d6e3-6279-4aa3-b7a5-68b37abfd327">3. <strong>What’s your why? Fill out the phrase below:</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a925663c-0556-4b01-afd6-bc5ed0052168">1. Brainstorm your business idea</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#64c9dea1-d1ff-41e2-9263-1a6e9098852c">2. <strong>Now, fill in the blanks below for your own business:</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fa7ca42b-eef7-4572-940b-d0e886db105f">3. Feeling stuck?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1fada01e-1b9a-4a54-a690-be0607c2251d">Still feeling stuck? Try brainstorming!</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f8d06481-724a-4909-b185-664bfd50c29b">1. What am I really into?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e316b051-ebef-4af9-bf67-fd119079ab88">2. Products or services that relate to my interests</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b9c4c9d6-0b6c-4671-a33b-677405bbc7de">3. Specific audiences you can offer for each product category</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#de7e1104-540c-4f28-8ded-6a45b550fd2f">Start your business journey with Shopify</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7a7ce00a-8996-4d27-afbc-b6096f955745"><a href="https://www.shopify.com/?utm_source=notion&amp;utm_medium=referral&amp;utm_campaign=bb&amp;utm_content=bae-bb-notion-template">Start 14-Day Free Trial</a></a></div></nav><p id="e4b9e383-7b0a-474d-8771-3be697752a56" class="">
+</p></div></div><hr id="7e43d415-e22a-409b-9800-c9d48a518995"/><div id="0a08ac76-331e-4d89-a083-866ca0f3141b" class="column-list"><div id="50b29882-a8c7-4975-9f55-7471a48c1a86" style="width:50%" class="column"><h1 id="0cd265c4-c87f-4b01-b6b9-51a58355f00f" class="">1. Define your “why”</h1><p id="b30f27c7-c41c-4465-812e-6ebdc557d947" class="block-color-gray"><strong>You can </strong><em><strong>start </strong></em><strong>a business overnight, but having a deeper understanding of </strong><em><strong>why </strong></em><strong>you’re choosing this path is what will propel your business forward.</strong></p><p id="78e2e83b-4ad8-45d2-ac31-52db76f0af78" class="block-color-gray">Think of your “why” as the backbone and the heartbeat of your business. It’ll allow you to feel a deeper connection and remind you <em>why </em>you chose this journey when both celebrations and challenges arise. Your <em>why </em>will be the thing you come back to as an entrepreneur, whenever you celebrate a milestone or encounter an obstacle, or go from your first customer to your 100th.</p><p id="efbfdabb-9b97-41ef-9f53-0fc643a2a7ca" class="block-color-gray">Every business owner has their own unique <em>why </em>because everyone has a unique story. You can even have more than one <em>why </em>and they may change over time. Writing it out can be an eye-opening exercise that affects the way you make decisions about your business.</p><p id="66fb0687-7069-4024-9239-467cbc8927e1" class="block-color-gray">Some entrepreneurs are motivated by the prospect of making money while having the freedom to carve a path that’s their own. Some entrepreneurs create a side business as a way to develop supplemental income. While others may use business as a means of expressing who they are and what they care about to the world.</p><p id="6e74686d-8fb0-4202-b52e-c7e88b049e86" class="">
+</p><p id="ad16735a-2704-4d56-9670-8457062dcd86" class=""><strong>Take some time to reflect on your own </strong><em><strong>why </strong></em><strong>and write it out below:
+</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3fa61fda-93a7-44fd-91e7-30991807a14d"><div style="font-size:1.5em"><img class="icon" src="https://super.so/icon/dark/chevron-right.svg"/></div><div style="width:100%"><mark class="highlight-gray">[your why]</mark>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div></figure></div><div id="8563f38d-27e4-4721-88ee-8dc818c9ed42" style="width:50%" class="column"><p id="20a7610c-07a5-438f-807a-716829e659d0" class="">
+</p><h3 id="ae3d0816-802b-46b4-945f-06bef50793ff" class="">2. <strong>Feeling stuck and still haven’t found your “why” yet?</strong></h3><p id="cc34988d-511d-463f-b908-703647e0d1ce" class="block-color-gray">Below are some examples of the problems (or areas of opportunity!) that starting a business can begin to solve.</p><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="34c6cff4-a508-4a3b-9133-924e7c69f473"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%">“To achieve financial freedom and retire young.”</div></figure><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="037b955f-7dd3-46b1-ac79-651e78d81e4b"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%">“To create a job where I can be my own boss.”</div></figure><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="98a9f209-fc9d-48ff-b64e-18948653b9cc"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%">“To solve a problem that I’ve experienced.”</div></figure><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="b90bf4e4-95f4-4a67-ac1c-89ee0a8d6edd"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%">“To make extra income to save for a big purchase”</div></figure><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="ca6b151a-62ca-4079-ae44-7af2014b6962"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%">“To rally behind a cause I’m passionate about.”</div></figure><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="08dd2cc7-4ba4-41ef-bf3f-c22cf0a68c24"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%">“To support myself and my family.”</div></figure><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="72b22446-aec5-42e7-b420-42499b172230"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%">“To have the freedom to make my own schedule and work from where I want.”</div></figure><h3 id="ec01d6e3-6279-4aa3-b7a5-68b37abfd327" class="">3. <strong>What’s your why? Fill out the phrase below:</strong></h3><p id="58607705-f0bd-45d9-9d12-675c51c8b33b" class="">I want to start a business to</p><p id="70f16628-6637-4be8-a57e-ea3007d3a735" class="">
+</p><blockquote id="275d225c-bc40-44d9-8d43-ec5430d31441" class=""><em><mark class="highlight-teal">“I dreamed of a brand that made products that tasted good, that had ingredients I felt good about sharing with my family. It should also be cool enough that someone without food allergies would choose to also eat it. When I couldn’t find it, I left my career to start Partake.”</mark></em></blockquote><p id="d0861204-1ad5-41b2-abf9-eacb31c85a44" class=""><strong><mark class="highlight-teal">– Denise Woodard, Founder, Partake Foods</mark></strong></p></div></div><hr id="794d358e-d7eb-46c5-89d0-5e037acabea8"/><div id="aa9ffc4f-7710-4463-afe3-ab0a7a02af08" class="column-list"><div id="0b180368-74ba-404e-9566-cc910ab64873" style="width:37.5%" class="column"><h1 id="a925663c-0556-4b01-afd6-bc5ed0052168" class="">1. Brainstorm your business idea</h1><p id="7c94ae26-ebc5-4803-b5a1-4a634b9d26b6" class=""><strong>More than money or employees, the first thing you’ll need to start a business is an idea.</strong></p><p id="9da4fa59-e57f-404a-aff9-d7aa93403bb3" class="block-color-gray">It’s the seed that the rest of your business will grow from. As you move through the Business Blueprint, your idea may evolve to a point where it’s quite different than when you started. And that’s okay because by building on your initial concept with research, marketing, and finance, you’ll develop a stronger idea.</p><p id="4ffe925a-37b3-44d9-8f62-8006be0ae891" class="block-color-gray">You can define a clear business idea by answering the following questions:</p><ul id="55b83143-fed4-4af6-9f1c-db06c9c5b4b1" class="block-color-gray bulleted-list"><li style="list-style-type:disc">What are you selling?</li></ul><ul id="3083c421-b03d-4444-a2c7-735ff90ed6fb" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Who will be your audience?</li></ul><ul id="bcb9c336-1d17-4f09-97db-87782467ff7a" class="block-color-gray bulleted-list"><li style="list-style-type:disc">What’s in it for your customers?</li></ul><p id="baa5e35e-573b-4c6e-82e1-e3a95a82a697" class="">
+</p><p id="0ef88b57-da67-4d7d-9ef3-eb8deba657fa" class=""><strong>Put it together and you have the ingredients for an awesome business idea:</strong></p><figure class="callout" style="white-space:pre-wrap;display:flex" id="67ff4c00-ff2e-4fca-aeb8-d0bbab6e28bb"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%"><mark class="highlight-teal">I’m going to sell </mark><mark class="highlight-teal"><strong>[thing you’re selling] </strong></mark><mark class="highlight-teal">to </mark><mark class="highlight-teal"><strong>[audience] </strong></mark><mark class="highlight-teal">so they can </mark><mark class="highlight-teal"><strong>[what’s in it for customers]</strong></mark><mark class="highlight-teal">.</mark></div></figure><p id="3a2888c5-c0ec-482a-a02f-3f8a521a99a5" class=""><strong>Here’s an example:</strong></p><figure class="callout" style="white-space:pre-wrap;display:flex" id="0e022d3f-489f-4582-bd34-a0bd0615f4e8"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%"><mark class="highlight-teal">I’m going to sell </mark><mark class="highlight-teal"><strong>delicious hot sauce </strong></mark><mark class="highlight-teal">to </mark><mark class="highlight-teal"><strong>people who like spicy food </strong></mark><mark class="highlight-teal">so they can </mark><mark class="highlight-teal"><strong>add some kick to their favorite meals</strong></mark><mark class="highlight-teal">.</mark></div></figure><p id="44d97a39-dd44-4c14-b05f-59ad5eb4a357" class="">
+</p><hr id="0c6f5365-6a44-4307-8d85-e0621d5f6911"/><p id="a45da8df-c809-4e59-b0ce-837fb121f634" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="edcce01c-0527-4a1a-bd92-09e07ef6a91b"><div style="font-size:1.5em"><span class="icon">⚡</span></div><div style="width:100%"><mark class="highlight-blue"><strong>Hot Tip: </strong></mark><mark class="highlight-blue">If choosing an idea is challenging, it helps to think about what problems you could be solving for a customer. Additionally, try to pick an idea with an audience group that’s large enough to sustain and scale your business.</mark></div></figure><figure class="block-color-orange_background callout" style="white-space:pre-wrap;display:flex" id="b4577f63-d54f-45bb-a36e-b38a52118c59"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><mark class="highlight-orange"><strong>Bonus Content: </strong></mark><mark class="highlight-orange">Check out </mark><a href="https://cdn.shopify.com/s/files/1/0070/7032/files/The_BIG_List_of_Business_Ideas_-_Shopify.pdf?utm_source=notion&amp;utm_medium=referral&amp;utm_campaign=bb&amp;utm_content=bae-bb-notion-template"><mark class="highlight-orange">The Big List of Business Ideas</mark></a><mark class="highlight-orange"> to find 100+ in-demand business ideas you can start today!</mark></div></figure></div><div id="60d74c97-7989-46f0-84f1-a9d12979acbf" style="width:62.5%" class="column"><p id="5a1d13a5-0251-4330-9383-e09fbdf58dea" class="">
+</p><h3 id="64c9dea1-d1ff-41e2-9263-1a6e9098852c" class="">2. <strong>Now, fill in the blanks below for your own business:</strong></h3><p id="f79e17f5-df23-4d60-8083-5949ad4f939c" class=""><mark class="highlight-gray">Put it together and you have the ingredients for an awesome business idea:</mark></p><p id="df8b772c-fa9e-4d9c-a196-09264eaf99b2" class="">
+</p><p id="4fefbea7-9fe7-4e7b-93ef-1d7a9da387c9" class="">I’m going to sell</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="fcc8d90a-49e5-4cf8-9f63-bfa72e6b62c8"><div style="font-size:1.5em"><img class="icon" src="https://super.so/icon/dark/chevron-right.svg"/></div><div style="width:100%"><mark class="highlight-gray">[thing you’re selling]</mark></div></figure><p id="8c911a86-41b7-482b-a748-51fe938316f5" class="">to</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3ad49c5a-aa7f-4380-8e7b-c5e3163bda79"><div style="font-size:1.5em"><img class="icon" src="https://super.so/icon/dark/chevron-right.svg"/></div><div style="width:100%"><mark class="highlight-gray">[audience]</mark></div></figure><p id="36a6cd60-54a7-49ae-9718-b6541d7bf65d" class="">so they can</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e2776e5c-dd03-4361-bc9b-8d938bc3940b"><div style="font-size:1.5em"><img class="icon" src="https://super.so/icon/dark/chevron-right.svg"/></div><div style="width:100%"><mark class="highlight-gray">[what’s in it for customers]</mark></div></figure><p id="a9ee0133-cf6a-43e5-8b6c-558f90f56267" class="">
+</p><h3 id="fa7ca42b-eef7-4572-940b-d0e886db105f" class="">3. Feeling stuck?</h3><p id="d3ccab0a-bdb1-4c8c-b024-4e2f5036b7d3" class="block-color-gray">Below are some examples to get you started.</p><p id="54a3d91c-9664-4096-982d-25fd13a6888a" class="">I’m going to sell...</p><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="907e7982-3ab5-4d47-8e5f-9b238009f0a5"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%"><strong>Post-workout recovery items</strong> to <strong>gym-goers </strong>so they can reduce <strong>their recovery time between workouts</strong>.</div></figure><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="dfdfdd57-6f0e-4c15-9e0c-a1e6698b0fc4"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%"><strong>Luxury dog beds</strong> to <strong>affluent dog owners</strong> so they can <strong>spoil their pup with the absolute best</strong>.</div></figure><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="1d75629f-688e-447f-b3d2-7cc9caf32a30"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%"><strong>Online cooking classes</strong> to <strong>people interested in meal prep</strong> so they can <strong>spend less time cooking</strong>.</div></figure><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="203ac86d-212f-4058-af59-9c13c0931277"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%"><strong>Landscaping services</strong> to <strong>homeowners with large yards</strong> so they’ll <strong>have one less chore to do</strong>.</div></figure><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="0a96c7ff-f2ab-477e-8925-ad745fdb8ded"><div style="font-size:1.5em"><img class="icon" src="https://i.stack.imgur.com/Vkq2a.png"/></div><div style="width:100%"><strong>Camping gear</strong> to <strong>first-time campers</strong> so they can <strong>enjoy the great outdoors without being unprepared</strong>.</div></figure></div></div><p id="693adefa-4206-4a1a-9ad7-fe41e1cfa0c5" class="">
+</p><hr id="56b1eebe-2564-4a33-9ed9-7b63c33e18da"/><h2 id="1fada01e-1b9a-4a54-a690-be0607c2251d" class="">Still feeling stuck? Try brainstorming!</h2><p id="8dbe379f-9cbd-49b3-a7bf-2a68b6f20dd4" class="block-color-gray">If you’re still unsure about your idea, your interests are a good place to start. Try brainstorming some options with the following exercise.</p><h3 id="f8d06481-724a-4909-b185-664bfd50c29b" class="">1. What am I really into?</h3><figure class="callout" style="white-space:pre-wrap;display:flex" id="1ad469a1-1fb4-4b16-bbb9-ea144479006c"><div style="font-size:1.5em"><span class="icon">🧑‍🍳</span></div><div style="width:100%"><strong>[Your interests, ex. Cooking]</strong></div></figure><h3 id="e316b051-ebef-4af9-bf67-fd119079ab88" class="">2. Products or services that relate to my interests</h3><div id="f25a7188-fdb3-42a3-b8f8-375d78a19675" class="column-list"><div id="061d3ef0-28b0-4eb1-9d14-c5b22b3a65b5" style="width:16.66666666666668%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="24c767a3-b9ec-4318-b0b4-15cde50e5b5f"><div style="font-size:1.5em"><span class="icon">🏫</span></div><div style="width:100%"><strong>[Product / Service,ex. Cooking Classes]</strong></div></figure></div><div id="6ed22ac2-0727-42f9-b3a1-7397a52af31f" style="width:16.66666666666668%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="56058f0f-fd84-49c5-ab18-b2cf1f27bf51"><div style="font-size:1.5em"><span class="icon">🍳</span></div><div style="width:100%"><strong>[Product / Service, ex. Cookware]</strong></div></figure></div><div id="7bbeacbc-e8f3-4ebb-8c13-9f5da9b68169" style="width:16.666666666666664%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="95523908-22a4-4f96-a43f-f613c845c8be"><div style="font-size:1.5em"><span class="icon">🥕</span></div><div style="width:100%"><strong>[Product / Service, ex. Organic Ingredients]</strong></div></figure></div><div id="9225ccc2-1fd2-44f6-8f3e-8a9bf33dd61f" style="width:16.66666666666668%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="12950d1d-db97-41ca-9217-f94ed6990908"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><strong>[Product / Service]</strong></div></figure></div><div id="ebb85072-d686-4164-ba9d-0c1302c4b9e5" style="width:16.66666666666667%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="80272650-0f7a-4bc5-b09d-50315e7d4a84"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><strong>[Product / Service]</strong></div></figure></div><div id="b1c497cb-dda3-4e24-871e-f14300576fa4" style="width:16.666666666666664%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="0f757b1e-3c32-43ca-91b5-6c89a32d3f8f"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><strong>[Product / Service]</strong></div></figure></div></div><h3 id="b9c4c9d6-0b6c-4671-a33b-677405bbc7de" class="">3. Specific audiences you can offer for each product category</h3><div id="0cefc784-2f62-4983-8bff-11dfaa805c8b" class="column-list"><div id="36bad4aa-8fd6-41e8-9fc3-d07dbde07db0" style="width:16.66666666666668%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="63f3d6f0-40cd-43aa-81d9-3ba0b231a243"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><strong>[Product / Service]</strong></div></figure><p id="006ab1ac-4c8a-425f-89a5-4c471d00f789" class="">Audiences:</p><ul id="bb3c631a-7ab7-43fd-8fed-fc3d7941ceb4" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="d8945a48-cb4a-40ec-94fc-d08266a3b6ba" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="15527106-fbd0-43bd-8671-8d8cac2112d6" class="bulleted-list"><li style="list-style-type:disc"></li></ul></div><div id="beddd657-e52e-48f5-9d92-8a26599f7b24" style="width:16.66666666666668%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="bc6bfde0-7276-4218-a9d4-d64b2eecc627"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><strong>[Product / Service]</strong></div></figure><p id="5b3063a8-f073-482b-b1e6-3d10892445bc" class="">Audiences:</p><ul id="02819466-c1b1-4a4f-8066-55ef58514e81" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="473d5cae-57cd-4fc8-ab1d-9b2e21484f95" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="da1911ca-d608-4146-956b-f74b10d9d029" class="bulleted-list"><li style="list-style-type:disc"></li></ul></div><div id="e08a6705-6bbc-43a4-87c9-b0af7338431d" style="width:16.666666666666664%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="c4a8e8ca-6808-44b6-bf98-b2d7305ffb6f"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><strong>[Product / Service]</strong></div></figure><p id="8f475ea3-f6df-4669-b5a4-dd820d4e53e7" class="">Audiences:</p><ul id="a710e225-3e85-478e-a7d7-da498fab0a39" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="b9c65d9d-2968-4e84-ad13-6953c0aa166e" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="b1fc6f1f-9b42-43f7-a174-ca5ce270b24f" class="bulleted-list"><li style="list-style-type:disc"></li></ul></div><div id="27494a8e-927e-432f-a650-f5c6ee79493c" style="width:16.66666666666668%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="a2fd7613-7880-4560-9e77-6015d9f2ca9a"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><strong>[Product / Service]</strong></div></figure><p id="874e92fb-fc76-476d-9529-031e238ac42b" class="">Audiences:</p><ul id="c41908da-bb1d-4f1e-bbf1-344c00d8e78f" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="ace66c16-b72c-4181-bdb0-d8d07e2f04b2" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="1ce6d79f-17c7-4a02-aacf-d204bdf8d5a1" class="bulleted-list"><li style="list-style-type:disc"></li></ul></div><div id="9144bd92-e98a-4d26-84b6-faa0783ec3e1" style="width:16.66666666666667%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="18b1337f-7465-43c5-9ef0-5f0dccbb11bb"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><strong>[Product / Service]</strong></div></figure><p id="e533f742-1889-4663-98f3-611537c48329" class="">Audiences:</p><ul id="fb3c9b8b-9fe4-45a0-8397-63ba4e9f97cc" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="bfd1feb7-610a-4da7-9a9e-97158c830c23" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="dc6607a4-a086-4456-9d65-bea96967155e" class="bulleted-list"><li style="list-style-type:disc"></li></ul></div><div id="879e4262-ec6e-419a-a7ba-2dacd32ba82c" style="width:16.666666666666664%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="5ddeb009-9911-4772-94b0-0af4e900bd9a"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><strong>[Product / Service]</strong></div></figure><p id="b12bb276-d870-4322-8ebd-641388be8d68" class="">Audiences:</p><ul id="38cc0c86-9632-4d5f-82b4-1961545e3d62" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="aad46f90-729b-48a6-949c-4702fcfe4c4a" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="b2c88a0c-e6b3-43e4-ac9a-600204e85250" class="bulleted-list"><li style="list-style-type:disc"></li></ul></div></div><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="4d4e65dd-3733-4c19-9574-2dc25ef02b38"><div style="font-size:1.5em"><span class="icon">👏</span></div><div style="width:100%"><mark class="highlight-blue"><strong>Great work! 
+</strong></mark><mark class="highlight-blue">Up next is </mark><mark class="highlight-blue"><a href="2%20Framing%204546453452d44a839d3813adb0f91778.html"><span class="icon">🪜</span>2: Framing</a></mark><mark class="highlight-blue"> 
+or return to the main dashboard: </mark><mark class="highlight-yellow"><a href="../Shopify%20Business%20Blueprint%205ca5d8dc03e5474f886dbd74df55462f.html"><img class="icon" src="icons8-online-shop-50%201.png"/>Shopify Business Blueprint</a></mark></div></figure><p id="a8e3c0cc-01d4-436b-8930-9733bb88b171" class="">
+</p><hr id="561fa069-c929-4031-894c-7e8637937dce"/><div id="3b1a46a9-f640-4bd9-8f03-1ec554b7a325" class="column-list"><div id="fefffa49-ad5a-4f04-afa9-fa1ea089bcc9" style="width:29.166666666666664%" class="column"><p id="fea7e7e0-42f4-44f3-a575-90bcc8d39a7a" class="">
+</p></div><div id="5c67a6aa-42ac-492e-8583-143644731f90" style="width:41.666666666666664%" class="column"><h1 id="de7e1104-540c-4f28-8ded-6a45b550fd2f" class="">Start your business journey with Shopify</h1><p id="c7ee13a2-f048-4ad7-9e59-451887187f24" class="">Try Shopify for free, and explore all the tools and services you need to start, run, and grow your business.</p><h3 id="7a7ce00a-8996-4d27-afbc-b6096f955745" class=""><a href="https://www.shopify.com/?utm_source=notion&amp;utm_medium=referral&amp;utm_campaign=bb&amp;utm_content=bae-bb-notion-template">Start 14-Day Free Trial</a></h3><p id="785567d4-03fe-442f-bc26-7fa7c3390f4d" class="">
+</p><p id="e00e700f-4f80-4042-b8f4-99eeec0bd666" class="">Get started building your operating system with Notion - <a href="https://www.notion.so/pages/shopify-notion-startup-partnership">startups may qualify for $1000 in Notion credit</a></p></div><div id="98110b98-5cba-4c91-9b48-2020c2773578" style="width:29.166666666666686%" class="column"><p id="18741f4b-aeca-4a0f-9317-4441c69a91c0" class="">
+</p><p id="d755788a-114a-44fc-9f52-f87780984108" class="">
+</p><p id="2a4dbf67-872e-4ab3-8f75-a4f244f2b10c" class="">
+</p><p id="b034298a-dc0a-4f88-9adf-7aaf6dc86118" class="">
+</p><p id="5a4a8778-a28a-438c-a9d9-51e607275d1b" class="">
+</p><p id="83a98a57-045d-443b-a327-2866da1296e5" class="">
+</p></div></div><figure id="20c2b875-4ef2-4308-97d2-11508358b4bf" class="image"><a href="1%20Planning%20c0aae4f9a9b740b79ee9be079c9c9f23/Shopify.svg"><img style="width:192px" src="1%20Planning%20c0aae4f9a9b740b79ee9be079c9c9f23/Shopify.svg"/></a></figure><figure id="83826d50-eda4-4190-a007-cddfe7e190b0"><div class="source"><a href="https://embed.notionlytics.com/wt/ZXlKd1lXZGxTV1FpT2lJNE5EVTVPVEpqWWpobE5USTBNelJtT0RBeU1HTTFaRFkxWm1NeU9EQTNOaUlzSW5kdmNtdHpjR0ZqWlZSeVlXTnJaWEpKWkNJNkltUnJiMHRCY21OTllqbG5VSE53WkZkc1lrRnpJbjA9">https://embed.notionlytics.com/wt/ZXlKd1lXZGxTV1FpT2lJNE5EVTVPVEpqWWpobE5USTBNelJtT0RBeU1HTTFaRFkxWm1NeU9EQTNOaUlzSW5kdmNtdHpjR0ZqWlZSeVlXTnJaWEpKWkNJNkltUnJiMHRCY21OTllqbG5VSE53WkZkc1lrRnpJbjA9</a></div></figure></div></article></body></html>

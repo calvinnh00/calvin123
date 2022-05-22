@@ -1,0 +1,745 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>3: Building</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4db6f225-274e-40be-813e-505b8f43c6e6" class="page sans"><header><img class="page-cover-image" src="3%20Building%204db6f225274e40be813e505b8f43c6e6/Shopify_BBNotionTemplate_Cover_V2.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🏗️</span></div><h1 class="page-title">3: Building</h1></header><div class="page-body"><p id="ce8b6e82-b2f1-4f12-b612-033920f92e70" class="block-color-orange"><mark class="highlight-yellow"><strong>Section 3</strong></mark><mark class="highlight-yellow"> // ●●●○
+</mark><mark class="highlight-yellow"><strong>Quick Links: </strong></mark><mark class="highlight-yellow"><strong><a href="1%20Planning%20c0aae4f9a9b740b79ee9be079c9c9f23.html"><span class="icon">✏️</span>1: Planning</a></strong></mark><mark class="highlight-yellow"><strong> </strong></mark><mark class="highlight-yellow"> </mark><mark class="highlight-yellow"><a href="2%20Framing%204546453452d44a839d3813adb0f91778.html"><span class="icon">🪜</span>2: Framing</a></mark><mark class="highlight-yellow"> </mark><mark class="highlight-yellow"><a href="4%20Growing%2085de54d6666f4d78821c08e29c9a7008.html"><span class="icon">🌳</span>4: Growing</a></mark><mark class="highlight-yellow"> | Dashboard: </mark><mark class="highlight-yellow"><a href="../Shopify%20Business%20Blueprint%205ca5d8dc03e5474f886dbd74df55462f.html"><img class="icon" src="icons8-online-shop-50%201.png"/>Shopify Business Blueprint</a></mark><mark class="highlight-yellow"> </mark></p><div id="7d433354-701b-4752-9d9e-7f6f75ee94ea" class="column-list"><div id="08693598-9058-40a6-9676-5a716a60e94a" style="width:43.75%" class="column"><figure id="1dad4033-5b59-4f30-8981-89edd126335f" class="image"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Shopify_BBNotionTemplate_3_Building_Widget.jpg"><img style="width:3950px" src="3%20Building%204db6f225274e40be813e505b8f43c6e6/Shopify_BBNotionTemplate_3_Building_Widget.jpg"/></a></figure></div><div id="72427af7-dde1-4fb6-bb2a-8c10b00be94c" style="width:56.25%" class="column"><p id="a8cae868-642b-4262-b264-c7efdca95f29" class="block-color-yellow"><strong>Table of Contents</strong></p><nav id="60b8f0b6-7f25-46db-8b8c-a322e31a3967" class="block-color-yellow table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#eb15f5c8-5f40-45a0-9d95-e2e91b02ab17">1. Develop your product</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#eaa8183c-a9f4-4f21-b4a4-8601f8ffbd58">2. Sourcing Options</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3083b82a-f02b-46a5-8c65-7ffe47da41fa">3. Considerations</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5e82e10e-6b9e-4335-854c-15e03620a2f8">Cost Per Unit</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5450ec88-ecd2-4a0b-87c3-a8a7c96f6f46">Selling Price</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1dae2dae-7f88-4542-bb68-d030858415f3">Profit Per Unit</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1afb5c1a-fab3-43c1-a216-6966d7e320c7">Features</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#675cef2e-ae28-41fd-a116-6f457aa59281">Profit Margin Calculator</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2ab3a43b-b6cd-4871-8fbe-087ffac932b0">4. <strong>Put it all together and watch your product come to life!</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1490e7ac-f231-4b43-be59-d1e51aa50531">1. <strong>Manage your money</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#84ea11b6-17db-4564-9094-0d6942941b1a">2. Variable Costs &amp; Fixed Costs Calculator</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cdbbe743-7fc1-4e0f-bde4-ad17e605d9b6">3. Break-even analysis</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1c71dd33-071d-4e7d-9d42-ed2a13c1e073">4. <strong>Now calculate your break-even point:</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2e88e0c0-1f51-41b8-8ff9-14c6ca4b7ca1"><strong>Revenue
+</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#eb8bee2e-f200-4857-94ca-8e59a0d8fedf"><strong>Operating costs
+</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e8f42e3f-749c-4407-b0d2-f70e45e2353b"><strong>Profit
+</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6b1a5d2c-7b34-40a2-b474-d541f9f5174a"><strong>Cost of goods sold (COGS)
+</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d105ccc6-8af8-4aa2-a9c3-cc55685973d5"><strong>Profit margin
+</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#86005f86-7dcb-4121-9769-fe13350faff9"><strong>Economies of scale
+</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c4b1e8a8-1b3b-4806-bf95-b543eed5599d">1. Build your brand</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e0cb62b8-85eb-4274-86c3-d54dd4ceac6a">2. <strong>Business name checklist:</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d5f81903-e3c4-4d02-affa-8b9467836d7b">3. <strong>Feeling stuck? Time to brainstorm!</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#299cccb7-6fb2-4bf6-b210-ceb3b63839f0">4. <strong>Your brand’s voice</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#29a2ad36-4367-4f66-8549-e95479936f5e">Start your business journey with Shopify</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#14fc4fdb-736f-48f8-954a-e304104a519a"><a href="https://www.shopify.com/?utm_source=notion&amp;utm_medium=referral&amp;utm_campaign=bb&amp;utm_content=bae-bb-notion-template">Start 14-Day Free Trial</a></a></div></nav><p id="7d9052b2-bf24-4afc-8a7d-b2be0e66624a" class="">
+</p></div></div><hr id="d5061762-de33-4820-9905-e65a832e37c0"/><h1 id="eb15f5c8-5f40-45a0-9d95-e2e91b02ab17" class="">1. Develop your product</h1><p id="9aa989b8-57a8-4642-923b-20661cf93f40" class="block-color-gray"><strong>With an idea of what you want to sell, a view of the competitive landscape, and your ideal customer in mind, you’re ready to start developing your first product or service.</strong></p><p id="75ff711b-1a47-45b9-85c7-bf0ded586c9c" class="block-color-gray">Below is an overview of different product sourcing options that exist for today’s entrepreneurs.</p><h2 id="eaa8183c-a9f4-4f21-b4a4-8601f8ffbd58" class="">2. Sourcing Options</h2><div id="9d22a12a-4650-481e-94b0-c0eb5cf18b33" class="column-list"><div id="6236a755-f7a4-42de-b308-2e03ef45e10a" style="width:50%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="d7fb1d64-20c0-4587-8b9e-3a02c935a7ce"><div style="font-size:1.5em"><span class="icon">🧑</span></div><div style="width:100%"><strong>Make it Yourself</strong><p id="f26c99bf-198a-414c-9821-c6875fa40400" class=""><mark class="highlight-teal"><strong>Pros</strong></mark><mark class="highlight-teal">:</mark> Producing your products by hand allows you to control nearly every aspect of the product.</p><p id="130df6d6-edf0-4c34-b17f-b57b349916a6" class=""><mark class="highlight-red"><strong>Cons</strong></mark><mark class="highlight-red">:</mark> You have to create each individual unit. However you can eventually hire other producers or work with a manufacturer to scale productions.</p><p id="2203744a-6529-4843-a764-b546b099f817" class=""><mark class="highlight-gray"><strong>Examples</strong></mark><mark class="highlight-gray">: Candles, soaps, knits, jewelry</mark></p></div></figure><p id="25828810-71d9-4bc5-85c9-98fd326e7eaa" class="">
+</p><figure class="callout" style="white-space:pre-wrap;display:flex" id="cc16cfaf-5b1d-4842-9972-e6cb07eb368c"><div style="font-size:1.5em"><span class="icon">🏬</span></div><div style="width:100%"><strong>Purchase from Wholesalers</strong><p id="927938aa-4089-4f11-8d49-422bf8c6d033" class=""><mark class="highlight-teal"><strong>Pros</strong></mark><mark class="highlight-teal">:</mark> Wholesalers offer quantity-based discounts on bulk orders to sell their products, which are usually already proven to sell well.</p><p id="90573137-1e0c-41a0-b870-0dbbe2c5b549" class=""><mark class="highlight-red"><strong>Cons</strong></mark><mark class="highlight-red">:</mark> Wholesalers can also sell to your competitors so what you’re selling may not be that unique to the market. You also need to order and hold a large quantity to maximize profits.</p><p id="9e95c9c2-317c-4be1-8e14-c246d17db165" class=""><mark class="highlight-gray"><strong>Examples</strong></mark><mark class="highlight-gray">: Phone cases, housewares, specialty coffee</mark></p></div></figure><p id="93c16204-02be-4b49-b127-2ad9ce625697" class="">
+</p><figure class="callout" style="white-space:pre-wrap;display:flex" id="ed62be69-906f-48a7-8052-9fd9e4f99afb"><div style="font-size:1.5em"><span class="icon">🏭</span></div><div style="width:100%"><strong>Work With a Manufacturer</strong><p id="b36950f1-8cb3-4d00-8245-a4ef7f9baecf" class=""><mark class="highlight-teal"><strong>Pros</strong></mark><mark class="highlight-teal">:</mark> Turn your idea into a physical product based on your specifications and lower your cost per unit by producing it in bulk.</p><p id="821360dd-46d9-4c28-9afe-f968ed2ee0e7" class=""><mark class="highlight-red"><strong>Cons</strong></mark><mark class="highlight-red">:</mark> This can be a much longer process as you’ll need to find a reliable manufacturer and develop a prototype which can take multiple attempts to get right. Most manufacturers also have a minimum order quantity you have to purchase to do business with them. This number can be anywhere from 10 to over 1,000 units.</p><p id="ee4f5d5b-4c47-4749-9288-4a1917e86906" class=""><strong><mark class="highlight-gray">Examples:</mark></strong><mark class="highlight-gray"> Waffle maker, toys, stickers</mark></p></div></figure></div><div id="651b0a51-ed71-4b3f-91d9-317a14793cb2" style="width:50%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="134e7c03-11e8-48d2-b2a4-9cc003da18a0"><div style="font-size:1.5em"><span class="icon">📦</span></div><div style="width:100%"><strong>Use a Dropshipping Supplier</strong><p id="cdfc611e-edb5-4b5e-b604-6f4505c29cae" class=""><mark class="highlight-teal"><strong>Pros</strong></mark><mark class="highlight-teal">:</mark> You don’t have to hold or ship the inventory yourself — your supplier does it for you. Some dropshippers, such as print-on-demand companies, also allow you to customize the products with your own designs.</p><p id="5782f58a-7cad-460a-844e-73572dbc3d95" class=""><mark class="highlight-red"><strong>Cons</strong></mark><mark class="highlight-red">:</mark> The low barrier to entry means you’re competing with many other businesses selling similar products and you lose out on the quantity-based savings you get from other product sourcing avenues. Very limited product customization in most cases.</p><p id="f2cae354-75e0-4ad8-8a7e-693069bad43e" class=""><strong><mark class="highlight-gray">Examples:</mark></strong><mark class="highlight-gray"> T-shirts, home goods, mugs</mark></p></div></figure><p id="b52ad0af-87b0-412d-bea2-f8c71a68ecf1" class="">
+</p><figure class="callout" style="white-space:pre-wrap;display:flex" id="61cdd91d-bdfc-48ba-89fb-b1964a6fd2f5"><div style="font-size:1.5em"><span class="icon">💻</span></div><div style="width:100%"><strong>Create a Digital Product</strong><p id="e3c1130f-501f-45c2-8343-8f0d975559d1" class=""><mark class="highlight-teal"><strong>Pros</strong></mark><mark class="highlight-teal">:</mark> No physical inventory management. These products also allow for higher profit margins since there are no recurring production costs — you create it once and sell
+it endlessly.</p><p id="36d2d99b-0876-47ca-9d29-e53f8593736a" class=""><mark class="highlight-red"><strong>Cons</strong></mark><mark class="highlight-red">:</mark> Risk of having your content stolen and shared widely. Highly competitive given the prevalence of digital products on the internet.</p><p id="1b50c8b3-59a4-45c4-b0bd-a5fbb71dceed" class=""><strong><mark class="highlight-gray">Examples:</mark></strong><mark class="highlight-gray"> On-demand video and music content, online courses</mark></p></div></figure><p id="ff54bdec-e33c-40f1-bf0c-7b9b4b4e9d47" class="">
+</p><figure class="callout" style="white-space:pre-wrap;display:flex" id="e9e701de-0d26-4106-b6e8-fb95cd1cf83a"><div style="font-size:1.5em"><span class="icon">🛎️</span></div><div style="width:100%"><strong>Package Your Expertise as a Service</strong><p id="693af44d-d128-4a7b-8997-d83fb5501f6e" class=""><mark class="highlight-teal"><strong>Pros</strong></mark><mark class="highlight-teal">:</mark> It’s easy to leverage your experience and knowledge to get started since you’re selling your skills.</p><p id="e12eedfc-a860-40a5-865c-1da698e713d2" class=""><mark class="highlight-red"><strong>Cons</strong></mark><mark class="highlight-red">:</mark> You’re directly trading your time for money which limits your income, unless you hire others to do the work.</p><p id="2fde1b95-ff6d-4425-8153-3a1bd41c3d46" class=""><strong><mark class="highlight-gray">Examples:</mark></strong><mark class="highlight-gray"> Freelance work, tutoring, house cleaning, car washing, music lessons, personal training</mark></p></div></figure></div></div><div id="7744813d-87bb-4bd9-9a55-c49cf300e98d" class="column-list"><div id="a196d0e9-4e03-4984-9875-37cfdc24d7e4" style="width:50.000000000000014%" class="column"><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="f17a59d7-0dfd-4c12-96a3-da1d70171382"><div style="font-size:1.5em"><span class="icon">🔄</span></div><div style="width:100%"><strong><mark class="highlight-teal">Recap:</mark></strong><mark class="highlight-teal"> In the second section, you began to discover two important things; the main competitors in your field, and the ideal audience to target.</mark></div></figure></div><div id="31927aef-c755-46c8-8122-e084d9ff5364" style="width:50%" class="column"><figure class="block-color-orange_background callout" style="white-space:pre-wrap;display:flex" id="3ecf1591-eb30-48a4-8e7f-f46b1dd3966c"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><mark class="highlight-orange"><strong>Bonus Content: </strong></mark><mark class="highlight-orange">Get more details about digital product sourcing </mark><a href="https://www.shopify.com/blog/topics/source-products?utm_source=notion&amp;utm_medium=referral&amp;utm_campaign=bb&amp;utm_content=bae-bb-notion-template"><mark class="highlight-orange">here</mark></a><mark class="highlight-orange">!</mark></div></figure></div></div><p id="891ec969-3c10-4689-a20c-beab660a0fca" class="">
+</p><hr id="34854cdc-cd6b-499d-b65a-cdea4936b991"/><p id="e3a51b5d-3b28-4eef-91b6-c2ea10b066ce" class="">
+</p><h2 id="3083b82a-f02b-46a5-8c65-7ffe47da41fa" class="">3. Considerations</h2><p id="7def9641-1812-46d6-92af-8d347c8d86f9" class=""><mark class="highlight-gray">Once you’ve thought about how you might source your product, planning it will involve the following considerations:</mark></p><div id="b0f1f0b6-59e9-489a-9895-095b051163e1" class="column-list"><div id="3841e288-686d-4822-855e-e4fa9ad9c477" style="width:43.75%" class="column"><h3 id="5e82e10e-6b9e-4335-854c-15e03620a2f8" class="">Cost Per Unit</h3><p id="b353b478-9d3d-472c-b460-1927ee5bcc2e" class=""><mark class="highlight-gray">What costs are involved to produce a single unit of your product? In many cases, your cost per unit will decrease as you produce a higher quantity of the product, saving on raw materials and other expenses. If you’re selling a service, your time has a cost too. If you don’t know the exact costs associated with your product, a rough estimate or target cost will do. The point is that you factor this in when thinking about your selling price and profit.</mark></p><h3 id="5450ec88-ecd2-4a0b-87c3-a8a7c96f6f46" class="">Selling Price</h3><p id="f421a926-482b-4376-bbe2-1c8b870b773d" class=""><mark class="highlight-gray">What will you ask your customers to pay for it? Your selling price communicates the value of your product to your ideal customer and influences how much profit you stand to make from a sale.</mark></p><h3 id="1dae2dae-7f88-4542-bb68-d030858415f3" class="">Profit Per Unit</h3><p id="33c6c587-65d0-46e6-ac38-7e462ae85956" class=""><mark class="highlight-gray">How much profit do you expect to see per unit sold, excluding marketing and other business costs incurred? You can increase your profit per unit by raising your selling price or by decreasing the cost per unit (such as by buying your materials in bulk).</mark></p><h3 id="1afb5c1a-fab3-43c1-a216-6966d7e320c7" class="">Features</h3><p id="07dd23e0-3509-4582-a258-584cab1a50e2" class=""><mark class="highlight-gray">What features will you highlight or build into your product to attract your ideal customer?</mark></p><p id="2e6383aa-89a2-4e80-9eb3-a2dac836e958" class="">
+</p></div><div id="a4a6323d-2727-4288-a1fa-27cb23dbc8ee" style="width:56.25%" class="column"><h3 id="675cef2e-ae28-41fd-a116-6f457aa59281" class="">Profit Margin Calculator</h3><figure class="callout" style="white-space:pre-wrap;display:flex" id="e91495ba-8fd3-4946-9fb3-f6872498d960"><div style="font-size:1.5em"><span class="icon">🧮</span></div><div style="width:100%"><mark class="highlight-gray">Use the Profit Margin Calculator to try out different pricing scenarios and see how much profit you can make! You can also use our online </mark><a href="http://shopify.com/tools/profit-margin-calculator"><mark class="highlight-gray">Profit Margin Calculator</mark></a><mark class="highlight-gray">.</mark><p id="d6f34bd2-830d-414b-b1c1-ee65128e38d7" class=""><mark class="highlight-gray">Fill in the </mark><mark class="highlight-gray"><code>Cost of Item</code></mark><mark class="highlight-gray"> and </mark><mark class="highlight-gray"><code>Markup</code></mark><mark class="highlight-gray"> cells below, and the calculator will do the rest!</mark></p><div id="ac5fa2e0-2f65-494a-9d01-9f1bc3fb943a" class="collection-content"><h4 class="collection-title"> </h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Item</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Cost</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Markup</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesFormula"><path d="M7.77892,7.06304 L4.62218,11.2875 C4.58556,11.3416 4.55285,11.4392 4.5504,11.5052 C4.5504,11.7022 4.7047,11.8619 4.89562,11.8619 L11.1383,11.8619 C11.6139,11.8619 11.9996,12.2598 11.9996,12.7507 L11.9996,13.1111 C11.9996,13.602 11.6139,14 11.1383,14 L1.861927,14 C1.385853,14 1.00011061,13.602 1.00011061,13.1111 L1.00011061,12.6858 C0.99718092,12.4783 1.0523567,12.3098 1.176868,12.1466 L4.39269,7.79888 C4.74816,7.31841 4.74572,6.65139 4.38683,6.17354 L1.400013,2.19436 C1.27306,2.03028 1.216419,1.85993 1.219349,1.65006 L1.219349,0.888889 C1.219349,0.397968 1.605091,0 2.08117,0 L10.91906,0 C11.3946,0 11.7804,0.397968 11.7804,0.888889 L11.7804,1.24925 C11.7804,1.74017 11.3946,2.13814 10.91906,2.13814 L5.13634,2.13814 C4.94542,2.13814 4.79064,2.29801 4.79064,2.49522 C4.79308,2.56049 4.82482,2.65709 4.86095,2.71087 L7.78038,6.68628 C7.8297,6.74847 7.84435,6.7934 7.84142,6.87363 C7.84435,6.95493 7.82921,7.00048 7.77892,7.06304 Z"></path></svg></span>Sale Price</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesFormula"><path d="M7.77892,7.06304 L4.62218,11.2875 C4.58556,11.3416 4.55285,11.4392 4.5504,11.5052 C4.5504,11.7022 4.7047,11.8619 4.89562,11.8619 L11.1383,11.8619 C11.6139,11.8619 11.9996,12.2598 11.9996,12.7507 L11.9996,13.1111 C11.9996,13.602 11.6139,14 11.1383,14 L1.861927,14 C1.385853,14 1.00011061,13.602 1.00011061,13.1111 L1.00011061,12.6858 C0.99718092,12.4783 1.0523567,12.3098 1.176868,12.1466 L4.39269,7.79888 C4.74816,7.31841 4.74572,6.65139 4.38683,6.17354 L1.400013,2.19436 C1.27306,2.03028 1.216419,1.85993 1.219349,1.65006 L1.219349,0.888889 C1.219349,0.397968 1.605091,0 2.08117,0 L10.91906,0 C11.3946,0 11.7804,0.397968 11.7804,0.888889 L11.7804,1.24925 C11.7804,1.74017 11.3946,2.13814 10.91906,2.13814 L5.13634,2.13814 C4.94542,2.13814 4.79064,2.29801 4.79064,2.49522 C4.79308,2.56049 4.82482,2.65709 4.86095,2.71087 L7.78038,6.68628 C7.8297,6.74847 7.84435,6.7934 7.84142,6.87363 C7.84435,6.95493 7.82921,7.00048 7.77892,7.06304 Z"></path></svg></span>Profit</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesFormula"><path d="M7.77892,7.06304 L4.62218,11.2875 C4.58556,11.3416 4.55285,11.4392 4.5504,11.5052 C4.5504,11.7022 4.7047,11.8619 4.89562,11.8619 L11.1383,11.8619 C11.6139,11.8619 11.9996,12.2598 11.9996,12.7507 L11.9996,13.1111 C11.9996,13.602 11.6139,14 11.1383,14 L1.861927,14 C1.385853,14 1.00011061,13.602 1.00011061,13.1111 L1.00011061,12.6858 C0.99718092,12.4783 1.0523567,12.3098 1.176868,12.1466 L4.39269,7.79888 C4.74816,7.31841 4.74572,6.65139 4.38683,6.17354 L1.400013,2.19436 C1.27306,2.03028 1.216419,1.85993 1.219349,1.65006 L1.219349,0.888889 C1.219349,0.397968 1.605091,0 2.08117,0 L10.91906,0 C11.3946,0 11.7804,0.397968 11.7804,0.888889 L11.7804,1.24925 C11.7804,1.74017 11.3946,2.13814 10.91906,2.13814 L5.13634,2.13814 C4.94542,2.13814 4.79064,2.29801 4.79064,2.49522 C4.79308,2.56049 4.82482,2.65709 4.86095,2.71087 L7.78038,6.68628 C7.8297,6.74847 7.84435,6.7934 7.84142,6.87363 C7.84435,6.95493 7.82921,7.00048 7.77892,7.06304 Z"></path></svg></span>Gross Margin</th></tr></thead><tbody><tr id="3373f262-2d16-49a3-9761-b67a32c3cb44"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Untitled%20ac5fa2e02f65494a9d019f1bc3fb943a/Product%20Name%203373f2622d1649a39761b67a32c3cb44.html">Product Name</a></td><td class="cell-c&gt;?G">$20.00</td><td class="cell-}`pm">10%</td><td class="cell-ng`l">22</td><td class="cell-d~ZA">2</td><td class="cell-bOa^">0.0909</td></tr></tbody></table></div></div></figure><p id="ce41bc5f-a2ce-43ba-a148-0cb453dc4d8f" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="6d93e6ae-0016-412c-b6c4-14973769ba0a"><div style="font-size:1.5em"><span class="icon">⚡</span></div><div style="width:100%"><mark class="highlight-blue"><strong>Hot Tip: </strong></mark><mark class="highlight-blue">Use the info from researching your competitors as well as your features and target market to think about the price range you want to aim for. Think about the value you’re delivering to customers, then price your products and services accordingly.</mark></div></figure></div></div><hr id="2c88ed63-55c8-4708-9693-20c80e617a6e"/><h3 id="2ab3a43b-b6cd-4871-8fbe-087ffac932b0" class="">4. <strong>Put it all together and watch your product come to life!</strong></h3><div id="b6b214e9-76e3-44af-8053-a3cb923e56a4" class="column-list"><div id="937ed09f-29c6-4d10-a394-3e790053ef16" style="width:43.75%" class="column"><figure class="callout" style="white-space:pre-wrap;display:flex" id="2294e0c1-2545-4806-8a2a-d34eac3ba73c"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><strong>Here’s an example:
+</strong><p id="80661d2f-a9a7-45ac-a595-ef8e83bbe74c" class="block-color-teal"><strong>Product</strong>: Habañero Hot Sauce</p><p id="857eb4b6-c22d-4c08-b25c-59400e707149" class="block-color-teal"><strong>Sourcing</strong>: Make it myself</p><p id="0e46a47a-5bc4-4c27-9491-23b523384175" class="block-color-teal"><strong>Cost per unit</strong>: $5</p><p id="cadb427f-a568-4e72-bec1-5cefe499d653" class="block-color-teal"><strong>Selling Price</strong>: $20</p><p id="be0831c1-bfc6-4e56-b5c8-1906616e800a" class="block-color-teal"><strong>Profit per unit</strong>: $15</p><p id="94c39b9d-3a91-4a11-8f3b-c358b5231f8f" class="block-color-teal"><strong>Features</strong>:</p><ul id="1f9ff84c-1519-4514-b05d-def0b55c5e28" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Less spicy than the market-standard habañero hot sauce</li></ul><ul id="341e13f3-300c-4405-88ac-91f8f2fcff63" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Family recipe</li></ul><ul id="885f8c16-7242-45c8-b20b-5f2c16afef91" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Fiery and fruity flavor</li></ul></div></figure></div><div id="e72ff096-5f1b-4a70-a58e-d9f877424004" style="width:56.25%" class="column"><p id="6832182c-1603-41a8-8fcb-7620a4106dc8" class=""><strong>Fill out the following about your product:</strong></p><p id="501814f0-3920-45b6-852b-7fd3eecf6e51" class=""><strong>Product</strong></p><div id="b8c75deb-872f-403b-b7a4-a10eb22c1e57" class="column-list"><div id="75922a87-99fc-4b77-be11-5457c9d2eb3f" style="width:50%" class="column"><p id="e69234ff-dba7-4787-ac18-cf2f2c86c1e5" class=""><strong>How will you source your product?</strong></p><ul id="967fa705-d428-4b31-9c37-4617f6ba0e58" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Make it myself</span></li></ul><ul id="8adeebf6-1422-49f7-9d75-27149e11258b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Find a manufacturer</span></li></ul><ul id="f6910546-5afc-4690-875a-2aae7de97604" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Use a dropshipping supplier</span></li></ul></div><div id="f8143e29-656e-40f0-ad9f-c8f475e8cbef" style="width:50%" class="column"><p id="54d9f7ee-43ec-4da1-ad96-5844d26029e0" class="">
+</p><ul id="4de41755-f049-4d6f-b0a0-d7084a1590e2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Curate from wholesalers</span></li></ul><ul id="013b98c7-bd42-4268-83ae-7ff7f37abb0d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Create a digital product</span></li></ul><ul id="75de4fea-8ef3-4aeb-be27-bbca428612d9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Package my expertise as a service</span></li></ul></div></div><div id="669924ba-45f0-4b23-837c-cd8c3f5990c5" class="column-list"><div id="35b37eb6-c596-4b88-a0dd-4a682a4c69fa" style="width:33.33333333333334%" class="column"><p id="3151c717-eccf-48bd-8087-ad43fcfce9b6" class=""><strong>Cost Per Unit</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="0d602b95-86e1-454b-af65-e79cb2148dcc"><div style="font-size:1.5em"><img class="icon" src="https://super.so/icon/dark/chevron-right.svg"/></div><div style="width:100%">$</div></figure></div><div id="caebf376-2ff3-4352-a542-55a846fd45bc" style="width:33.333333333333336%" class="column"><p id="a5fc66eb-7bd0-4b37-bd87-3db3cd0f18f0" class=""><strong>Selling Price</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="84b3cd7c-2538-4432-9e5d-57a3e9db3dbd"><div style="font-size:1.5em"><img class="icon" src="https://super.so/icon/dark/chevron-right.svg"/></div><div style="width:100%">$</div></figure></div><div id="ddeb90ab-63a2-4ce4-b5be-a6b224f63dd2" style="width:33.33333333333333%" class="column"><p id="dbdf840c-02b9-403b-a961-5e6cba35087a" class=""><strong>Profit Per Unit</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="afb77c52-23e4-4de9-8305-3ff62a3f95aa"><div style="font-size:1.5em"><img class="icon" src="https://super.so/icon/dark/chevron-right.svg"/></div><div style="width:100%">$</div></figure></div></div><p id="6e05f79f-7008-4f37-a39a-c0cf63254bd0" class=""><strong>Features:</strong></p><p id="7b3170fd-9d11-4f48-8e8e-19c6cfc5e715" class="">
+</p><p id="947cc2af-371c-4560-8786-31f21677edb4" class="block-color-gray">You can repeat this process to develop each additional product you want to sell.</p></div></div><p id="5bc21124-3c85-4127-bb93-4f8727073394" class="">
+</p><hr id="029311fe-0735-49fc-91b0-f7fbe95ebe75"/><div id="13b4abf0-d1b4-4099-8c0e-afab9461a76f" class="column-list"><div id="0ba85cb5-a218-4496-ac89-bfd935112211" style="width:37.5%" class="column"><h1 id="1490e7ac-f231-4b43-be59-d1e51aa50531" class="">1. <strong>Manage your money</strong></h1><p id="0170cc8f-a8b1-4c4f-8451-6e7930748ae9" class=""><strong>The goal of any business is to make money, but it also costs money to run your business effectively.</strong></p><p id="c3e6c204-bd80-46d7-835c-37a5ade888ce" class="block-color-gray">These costs can include everything from buying inventory to hosting your website to spending money on marketing. There are two types of costs you should be aware of:</p><figure class="callout" style="white-space:pre-wrap;display:flex" id="9408fd80-8ac4-471d-8f53-f98b91eb034c"><div style="font-size:1.5em"><span class="icon">🎚️</span></div><div style="width:100%"><strong>Variable costs </strong>fluctuate based on your sales volume, such as the cost of producing one product versus the savings you gain when you order 1000 in bulk. Marketing is also often variable as you scale.</div></figure><figure class="callout" style="white-space:pre-wrap;display:flex" id="0f2f8ad8-dea5-4f57-ac1c-da3fda19bd69"><div style="font-size:1.5em"><span class="icon">🔒</span></div><div style="width:100%"><strong>Fixed costs </strong>fluctuate based on your sales volume, such as the cost of producing one product versus the savings you gain when you order 1000 in bulk. Marketing is also often variable as you scale.</div></figure><hr id="3fd7e857-bd09-4245-8e95-478f64775587"/><figure class="callout" style="white-space:pre-wrap;display:flex" id="023f6db3-90e0-4942-8cbf-c54b0afc765d"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><strong>Take a look at the example below:
+</strong><div id="fd72aeba-9423-4087-b2b8-95bc98d0062f" class="collection-content"><h4 class="collection-title">Variable Costs [Example]</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Per Unit Amount</th></tr></thead><tbody><tr id="e1ef18cb-347f-45e5-9683-2826f7cab7ab"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%20%5BExample%5D%20fd72aeba94234087b2b895bc98d0062f/Bottles,%20caps,%20and%20labels%20e1ef18cb347f45e596832826f7cab7ab.html"><span class="icon">⚙️</span>Bottles, caps, and labels</a></td><td class="cell-S|Qq">$2.00</td></tr><tr id="54fd764d-c816-4f6e-bdf8-b2ef50207789"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%20%5BExample%5D%20fd72aeba94234087b2b895bc98d0062f/Hot%20sauce%20ingredients%2054fd764dc8164f6ebdf8b2ef50207789.html"><span class="icon">🌶️</span>Hot sauce ingredients</a></td><td class="cell-S|Qq">$2.00</td></tr><tr id="391d7a9d-2d76-40c3-87bc-89938046cd63"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%20%5BExample%5D%20fd72aeba94234087b2b895bc98d0062f/Packaging%20and%20shipping%20391d7a9d2d7640c387bc89938046cd63.html"><span class="icon">🚛</span>Packaging and shipping</a></td><td class="cell-S|Qq">$5.00</td></tr><tr id="fe81d089-ab85-4cc5-a8eb-ef9e5baf1da8"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%20%5BExample%5D%20fd72aeba94234087b2b895bc98d0062f/Advertising%20costs%20fe81d089ab854cc5a8ebef9e5baf1da8.html"><span class="icon">📣</span>Advertising costs</a></td><td class="cell-S|Qq">$4.00</td></tr></tbody></table></div><p id="8a6a929e-180a-4a95-a011-365829b5936e" class="">
+</p><div id="f750702f-7e70-48c2-be78-927fafe2c9b3" class="collection-content"><h4 class="collection-title">Fixed Costs [Example]</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>One Time Costs</th></tr></thead><tbody><tr id="2dc01def-8b0e-4f38-8b06-fb808ef320ed"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%20%5BExample%5D%20f750702f7e7048c2be78927fafe2c9b3/Kitchen%20equipment%202dc01def8b0e4f388b06fb808ef320ed.html"><span class="icon">🍴</span>Kitchen equipment</a></td><td class="cell-S|Qq">$50.00</td></tr><tr id="e88c5783-e257-4aeb-8023-c9b97f4f5255"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%20%5BExample%5D%20f750702f7e7048c2be78927fafe2c9b3/Domain%20e88c5783e2574aeb8023c9b97f4f5255.html"><span class="icon">🌐</span>Domain</a></td><td class="cell-S|Qq">$20.00</td></tr><tr id="39c25f97-90d6-47ae-a044-59de1248a354"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%20%5BExample%5D%20f750702f7e7048c2be78927fafe2c9b3/Shipping%20label%20printer%2039c25f9790d647aea04459de1248a354.html"><span class="icon">🖨️</span>Shipping label printer</a></td><td class="cell-S|Qq">$300.00</td></tr><tr id="a031e452-6ac2-4cd3-af97-6207a95526b4"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%20%5BExample%5D%20f750702f7e7048c2be78927fafe2c9b3/Hot%20sauce%20logo%20design%20a031e4526ac24cd3af976207a95526b4.html"><span class="icon">🎨</span>Hot sauce logo design</a></td><td class="cell-S|Qq">$100.00</td></tr></tbody></table></div></div></figure><p id="f7139ceb-9dae-439a-8397-5cf382667c88" class="">
+</p></div><div id="9134fa65-37d4-4ccf-bf9f-f7889a163bf2" style="width:62.5%" class="column"><p id="ee8416bb-72d3-43a3-b53f-92fa4e2757f4" class="">
+</p><p id="2bd22a15-404e-413f-b883-213c555523cd" class="">
+</p><h3 id="84ea11b6-17db-4564-9094-0d6942941b1a" class="">2. Variable Costs &amp; Fixed Costs Calculator</h3><p id="e68561fd-82e9-4765-aea9-fcfd03eb5231" class="block-color-gray">Think about the variable and fixed costs that would be associated with starting your business and list these expenses below, along with the amounts if you know them.</p><p id="fec5f4b9-8fd5-45be-8c7f-08d75b73c722" class=""><strong>Fill out the table below:
+</strong></p><div id="6902201b-6f7c-4fb7-91a9-80cc8d42d21d" class="column-list"><div id="bf859e89-5da8-404f-b95c-8b190c7fd122" style="width:50%" class="column"><div id="2d0130c5-5956-4acf-91ac-e735e0e492d7" class="collection-content"><h4 class="collection-title">Variable Costs</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Per Unit Amount</th></tr></thead><tbody><tr id="34fd5d14-dbca-40a7-b6fa-d1a69d1dcd02"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%2034fd5d14dbca40a7b6fad1a69d1dcd02.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="727f12bd-7069-49ba-aa21-310029fafd3a"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%20727f12bd706949baaa21310029fafd3a.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="60ced833-6904-497a-9b33-4c6af4d5ca22"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%2060ced8336904497a9b334c6af4d5ca22.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="5b0e70e9-e70f-4959-8360-3a56482ade8c"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%205b0e70e9e70f495983603a56482ade8c.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="690d5b06-542b-401a-a6a9-fa5701f9c40d"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%20690d5b06542b401aa6a9fa5701f9c40d.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="94bf2b1e-601f-43a1-9cc4-4bc7a46c17d6"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%2094bf2b1e601f43a19cc44bc7a46c17d6.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="59744f2e-91ac-46a8-83fb-186c92afa232"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%2059744f2e91ac46a883fb186c92afa232.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="51f81bbe-2c22-4bbb-911c-96899cf6a2a2"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%2051f81bbe2c224bbb911c96899cf6a2a2.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="7478f3da-d93d-4137-9a59-8cca84406b69"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%207478f3dad93d41379a598cca84406b69.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="a0da1f86-66f4-4fb7-b99b-f7f8abb95f0e"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%20a0da1f8666f44fb7b99bf7f8abb95f0e.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="f3e519b0-5080-4a12-8435-3518e4509f29"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%20f3e519b050804a1284353518e4509f29.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="8fa44f09-60c4-45b3-a3c8-47d913f9e2f6"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%208fa44f0960c445b3a3c847d913f9e2f6.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="32fa8bf7-ded5-4206-b50c-a2a9c1516645"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%2032fa8bf7ded54206b50ca2a9c1516645.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="cc753aef-f7c3-4dce-9559-a5dd8d5aacc6"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%20cc753aeff7c34dce9559a5dd8d5aacc6.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="9d88d140-968a-418a-8e77-ae0cdf4696b1"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%209d88d140968a418a8e77ae0cdf4696b1.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="4d238e3f-4d99-410b-8a89-3b66ae7b9d25"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%204d238e3f4d99410b8a893b66ae7b9d25.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="ee1aecd1-bbb7-4f7b-850d-4ebf87d50993"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%20ee1aecd1bbb74f7b850d4ebf87d50993.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="1dce8eb2-4d5c-4042-b2c0-4671f7f58cba"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%201dce8eb24d5c4042b2c04671f7f58cba.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="51d5e4f4-2ef8-43ec-a23c-28c502c24899"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%2051d5e4f42ef843eca23c28c502c24899.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="4e998e78-52de-4656-8b22-c292d272715a"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%204e998e7852de46568b22c292d272715a.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="d08f4f1d-8907-4f92-a61a-898201cc2b67"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%20d08f4f1d89074f92a61a898201cc2b67.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="73978bb3-04c1-499c-b648-e1c45f21724b"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%2073978bb304c1499cb648e1c45f21724b.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="a8e543c2-1d42-4990-a747-f85bab92f3a6"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%20a8e543c21d424990a747f85bab92f3a6.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="26463eeb-c9a6-4994-90a6-2b55508be5e5"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Variable%20Costs%202d0130c559564acf91ace735e0e492d7/Untitled%2026463eebc9a6499490a62b55508be5e5.html">Untitled</a></td><td class="cell-S|Qq"></td></tr></tbody></table></div></div><div id="14df4b58-b275-4d6f-b4ca-c10426d4ced7" style="width:50%" class="column"><div id="9a4758be-8b7f-41f9-8344-78f36ae3cc88" class="collection-content"><h4 class="collection-title">Fixed Costs</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>One Time Costs</th></tr></thead><tbody><tr id="64ba81cf-4312-4dab-807c-e348a1b42e51"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%2064ba81cf43124dab807ce348a1b42e51.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="b7c3c864-9baa-49c1-bb41-2bbb884a67de"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20b7c3c8649baa49c1bb412bbb884a67de.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="ae65523b-a7af-41c9-a8b1-0f17daf77394"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20ae65523ba7af41c9a8b10f17daf77394.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="ad707a52-fcdd-439d-b8cf-194a7e9acfd4"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20ad707a52fcdd439db8cf194a7e9acfd4.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="f2646597-f1d6-49b9-9cda-c655e8566ee6"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20f2646597f1d649b99cdac655e8566ee6.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="352c2c22-d369-4577-bb28-d9c8328318a9"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20352c2c22d3694577bb28d9c8328318a9.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="d11bbb68-12f9-4f6e-a1f0-f4d9c2f69010"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20d11bbb6812f94f6ea1f0f4d9c2f69010.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="e99a4c6c-8d3c-4f51-9ee3-ea22c0eca3ce"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20e99a4c6c8d3c4f519ee3ea22c0eca3ce.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="00be696b-bc55-4d28-84be-a1f47f1fa715"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%2000be696bbc554d2884bea1f47f1fa715.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="dbb3a200-aa1d-4a87-b1b3-65be0cab2dfc"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20dbb3a200aa1d4a87b1b365be0cab2dfc.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="befaff4d-8c54-4927-97a2-886861df6c12"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20befaff4d8c54492797a2886861df6c12.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="162aaa87-dd07-4032-8119-19de95fd876c"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20162aaa87dd074032811919de95fd876c.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="6976b37e-9733-44c3-aafe-65a37731b90c"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%206976b37e973344c3aafe65a37731b90c.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="b25a22b5-79bf-4caa-8004-b014bc04429c"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20b25a22b579bf4caa8004b014bc04429c.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="9341fc99-42cd-47b1-9268-1f5cfdb4c34b"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%209341fc9942cd47b192681f5cfdb4c34b.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="1e28bfa0-b97f-4406-b1fc-a3b478ce2949"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%201e28bfa0b97f4406b1fca3b478ce2949.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="a5f2681a-5137-492b-b06e-d9b1ba7feed0"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20a5f2681a5137492bb06ed9b1ba7feed0.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="7c5911d7-8829-4e55-a629-d16dc4e6687f"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%207c5911d788294e55a629d16dc4e6687f.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="bf5349bc-243d-45ec-ae9e-1d583583c53f"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%20bf5349bc243d45ecae9e1d583583c53f.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="0b1318bf-418a-47f2-8963-41351d97eb45"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%200b1318bf418a47f2896341351d97eb45.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="7c3976d0-08ef-4d84-bd61-b6c7dc03120f"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%207c3976d008ef4d84bd61b6c7dc03120f.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="3b13fdd7-3760-48b7-8618-3f4afdb241c9"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%203b13fdd7376048b786183f4afdb241c9.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="34f078c2-8c12-4d14-9af4-db705cc70946"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%2034f078c28c124d149af4db705cc70946.html">Untitled</a></td><td class="cell-S|Qq"></td></tr><tr id="38ad57b8-0d4c-4581-a267-0a6b0aa5d2a6"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Fixed%20Costs%209a4758be8b7f41f9834478f36ae3cc88/Untitled%2038ad57b80d4c4581a2670a6b0aa5d2a6.html">Untitled</a></td><td class="cell-S|Qq"></td></tr></tbody></table></div></div></div></div></div><hr id="bf24a0dc-7fa3-4a24-8727-82c3bb1bb777"/><div id="bf2c0c03-6376-4852-a79c-5c5c52c8aff2" class="column-list"><div id="7f76709c-647d-4360-bc23-58b536788a3d" style="width:56.25%" class="column"><h2 id="cdbbe743-7fc1-4e0f-bde4-ad17e605d9b6" class="">3. Break-even analysis</h2><p id="2c4240cf-4306-481d-ac0b-f732cc6161fa" class=""><mark class="highlight-gray">With all your costs listed out, you can do what’s called a </mark><mark class="highlight-gray"><strong>Break-Even Analysis </strong></mark><mark class="highlight-gray">to figure out how many units you need to sell to “break even,” cover production costs, and begin making a profit. For this exercise, We’ll use an average unit price of $20.</mark></p><p id="24461e53-ca51-4ebf-8bb1-b1e4ef42cae8" class=""><mark class="highlight-gray">To calculate the break-even point, use the following formula:</mark></p><figure id="bd94d10c-c650-4fa6-9c39-27a2d573a403" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mi mathvariant="sans-serif">f</mi><mi mathvariant="sans-serif">i</mi><mi mathvariant="sans-serif">x</mi><mi mathvariant="sans-serif">e</mi><mi mathvariant="sans-serif">d</mi><mtext> </mtext><mi mathvariant="sans-serif">c</mi><mi mathvariant="sans-serif">o</mi><mi mathvariant="sans-serif">s</mi><mi mathvariant="sans-serif">t</mi><mi mathvariant="sans-serif">s</mi></mrow><mrow><mi mathvariant="sans-serif">a</mi><mi mathvariant="sans-serif">v</mi><mi mathvariant="sans-serif">g</mi><mtext> </mtext><mi mathvariant="sans-serif">p</mi><mi mathvariant="sans-serif">r</mi><mi mathvariant="sans-serif">i</mi><mi mathvariant="sans-serif">c</mi><mi mathvariant="sans-serif">e</mi><mtext> </mtext><mi mathvariant="sans-serif">o</mi><mi mathvariant="sans-serif">f</mi><mtext> </mtext><mi mathvariant="sans-serif">u</mi><mi mathvariant="sans-serif">n</mi><mi mathvariant="sans-serif">i</mi><mi mathvariant="sans-serif">t</mi><mo>−</mo><mi mathvariant="sans-serif">v</mi><mi mathvariant="sans-serif">a</mi><mi mathvariant="sans-serif">r</mi><mi mathvariant="sans-serif">i</mi><mi mathvariant="sans-serif">a</mi><mi mathvariant="sans-serif">b</mi><mi mathvariant="sans-serif">l</mi><mi mathvariant="sans-serif">e</mi><mtext> </mtext><mi mathvariant="sans-serif">c</mi><mi mathvariant="sans-serif">o</mi><mi mathvariant="sans-serif">s</mi><mi mathvariant="sans-serif">t</mi><mi mathvariant="sans-serif">s</mi></mrow></mfrac><mo>=</mo><mi mathvariant="sans-serif">u</mi><mi mathvariant="sans-serif">n</mi><mi mathvariant="sans-serif">i</mi><mi mathvariant="sans-serif">t</mi><mi mathvariant="sans-serif">s</mi><mtext> </mtext><mi mathvariant="sans-serif">t</mi><mi mathvariant="sans-serif">o</mi><mtext> </mtext><mi mathvariant="sans-serif">b</mi><mi mathvariant="sans-serif">r</mi><mi mathvariant="sans-serif">e</mi><mi mathvariant="sans-serif">a</mi><mi mathvariant="sans-serif">k</mi><mtext> </mtext><mi mathvariant="sans-serif">e</mi><mi mathvariant="sans-serif">v</mi><mi mathvariant="sans-serif">e</mi><mi mathvariant="sans-serif">n</mi></mrow><annotation encoding="application/x-tex">\mathsf {\frac{fixed~costs}
+{avg~price~of~unit - variable~costs}= units~to~break~even}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.25188em;vertical-align:-0.8804400000000001em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathsf" style="margin-right:0.01389em;">avg</span><span class="mspace nobreak"> </span><span class="mord mathsf">price</span><span class="mspace nobreak"> </span><span class="mord mathsf" style="margin-right:0.06944em;">of</span><span class="mspace nobreak"> </span><span class="mord mathsf">unit</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathsf">variable</span><span class="mspace nobreak"> </span><span class="mord mathsf">costs</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathsf">fixed</span><span class="mspace nobreak"> </span><span class="mord mathsf">costs</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathsf">units</span><span class="mspace nobreak"> </span><span class="mord mathsf">to</span><span class="mspace nobreak"> </span><span class="mord mathsf">break</span><span class="mspace nobreak"> </span><span class="mord mathsf">even</span></span></span></span></span></span></div></figure><figure class="callout" style="white-space:pre-wrap;display:flex" id="b931ef75-54d4-459f-8f18-5389e76fbea0"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><strong>Example:</strong><figure id="fd1958ed-1de3-4326-b68b-11346143b1bb" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mstyle mathsize="0.9em"><mstyle mathcolor="seagreen"><mrow><mfrac><mrow><mi mathvariant="sans-serif">f</mi><mi mathvariant="sans-serif">i</mi><mi mathvariant="sans-serif">x</mi><mi mathvariant="sans-serif">e</mi><mi mathvariant="sans-serif">d</mi><mtext> </mtext><mi mathvariant="sans-serif">c</mi><mi mathvariant="sans-serif">o</mi><mi mathvariant="sans-serif">s</mi><mi mathvariant="sans-serif">t</mi><mi mathvariant="sans-serif">s</mi><mtext> </mtext><mo stretchy="false">(</mo><mn mathvariant="sans-serif">470</mn><mo stretchy="false">)</mo></mrow><mrow><mi mathvariant="sans-serif">a</mi><mi mathvariant="sans-serif">v</mi><mi mathvariant="sans-serif">e</mi><mi mathvariant="sans-serif">r</mi><mi mathvariant="sans-serif">a</mi><mi mathvariant="sans-serif">g</mi><mi mathvariant="sans-serif">e</mi><mtext> </mtext><mi mathvariant="sans-serif">p</mi><mi mathvariant="sans-serif">r</mi><mi mathvariant="sans-serif">i</mi><mi mathvariant="sans-serif">c</mi><mi mathvariant="sans-serif">e</mi><mtext> </mtext><mi mathvariant="sans-serif">o</mi><mi mathvariant="sans-serif">f</mi><mtext> </mtext><mi mathvariant="sans-serif">u</mi><mi mathvariant="sans-serif">n</mi><mi mathvariant="sans-serif">i</mi><mi mathvariant="sans-serif">t</mi><mtext> </mtext><mo stretchy="false">(</mo><mn mathvariant="sans-serif">20</mn><mo stretchy="false">)</mo><mo>−</mo><mi mathvariant="sans-serif">v</mi><mi mathvariant="sans-serif">a</mi><mi mathvariant="sans-serif">r</mi><mi mathvariant="sans-serif">i</mi><mi mathvariant="sans-serif">a</mi><mi mathvariant="sans-serif">b</mi><mi mathvariant="sans-serif">l</mi><mi mathvariant="sans-serif">e</mi><mtext> </mtext><mi mathvariant="sans-serif">c</mi><mi mathvariant="sans-serif">o</mi><mi mathvariant="sans-serif">s</mi><mi mathvariant="sans-serif">t</mi><mi mathvariant="sans-serif">s</mi><mtext> </mtext><mo stretchy="false">(</mo><mn mathvariant="sans-serif">13</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mn mathvariant="sans-serif">67</mn></mrow></mstyle></mstyle></mrow><annotation encoding="application/x-tex">\small{\color{seagreen}\mathsf{\frac{fixed~costs~(470)}
+{average~price~of~unit~(20)- variable~costs~(13)}=67}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.1267em;vertical-align:-0.8424em;"></span><span class="mord sizing reset-size6 size5"><span class="mord" style="color:seagreen;"><span class="mord" style="color:seagreen;"><span class="mopen nulldelimiter sizing reset-size5 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:seagreen;"><span class="mord mathsf" style="color:seagreen;">average</span><span class="mspace nobreak" style="color:seagreen;"><span style="color:seagreen;"> </span></span><span class="mord mathsf" style="color:seagreen;">price</span><span class="mspace nobreak" style="color:seagreen;"><span style="color:seagreen;"> </span></span><span class="mord mathsf" style="margin-right:0.06944em;color:seagreen;">of</span><span class="mspace nobreak" style="color:seagreen;"><span style="color:seagreen;"> </span></span><span class="mord mathsf" style="color:seagreen;">unit</span><span class="mspace nobreak" style="color:seagreen;"><span style="color:seagreen;"> </span></span><span class="mopen" style="color:seagreen;">(</span><span class="mord mathsf" style="color:seagreen;">20</span><span class="mclose" style="color:seagreen;">)</span><span class="mspace" style="color:seagreen;margin-right:0.2222222222222222em;"></span><span class="mbin" style="color:seagreen;">−</span><span class="mspace" style="color:seagreen;margin-right:0.2222222222222222em;"></span><span class="mord mathsf" style="color:seagreen;">variable</span><span class="mspace nobreak" style="color:seagreen;"><span style="color:seagreen;"> </span></span><span class="mord mathsf" style="color:seagreen;">costs</span><span class="mspace nobreak" style="color:seagreen;"><span style="color:seagreen;"> </span></span><span class="mopen" style="color:seagreen;">(</span><span class="mord mathsf" style="color:seagreen;">13</span><span class="mclose" style="color:seagreen;">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="color:seagreen;border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:seagreen;"><span class="mord mathsf" style="color:seagreen;">fixed</span><span class="mspace nobreak" style="color:seagreen;"><span style="color:seagreen;"> </span></span><span class="mord mathsf" style="color:seagreen;">costs</span><span class="mspace nobreak" style="color:seagreen;"><span style="color:seagreen;"> </span></span><span class="mopen" style="color:seagreen;">(</span><span class="mord mathsf" style="color:seagreen;">470</span><span class="mclose" style="color:seagreen;">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size5 size6"></span></span><span class="mspace" style="color:seagreen;margin-right:0.2777777777777778em;"></span><span class="mrel" style="color:seagreen;">=</span><span class="mspace" style="color:seagreen;margin-right:0.2777777777777778em;"></span><span class="mord mathsf" style="color:seagreen;">67</span></span></span></span></span></span></span></div></figure><figure id="097fa761-eb29-4c0f-8c08-38de9143571e" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mstyle mathsize="0.9em"><mstyle mathcolor="seagreen"><mrow><mfrac><mn mathvariant="sans-serif">470</mn><mrow><mn mathvariant="sans-serif">20</mn><mo>−</mo><mn mathvariant="sans-serif">13</mn></mrow></mfrac><mo>=</mo><mn mathvariant="sans-serif">67</mn></mrow></mstyle></mstyle></mrow><annotation encoding="application/x-tex">\small{\color{seagreen}\mathsf{\frac{470}
+{20-13}=67}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.8917009999999999em;vertical-align:-0.692397em;"></span><span class="mord sizing reset-size6 size5"><span class="mord" style="color:seagreen;"><span class="mord" style="color:seagreen;"><span class="mopen nulldelimiter sizing reset-size5 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.33256em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:seagreen;"><span class="mord mathsf" style="color:seagreen;">20</span><span class="mspace" style="color:seagreen;margin-right:0.2222222222222222em;"></span><span class="mbin" style="color:seagreen;">−</span><span class="mspace" style="color:seagreen;margin-right:0.2222222222222222em;"></span><span class="mord mathsf" style="color:seagreen;">13</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="color:seagreen;border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:seagreen;"><span class="mord mathsf" style="color:seagreen;">470</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693300000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size5 size6"></span></span><span class="mspace" style="color:seagreen;margin-right:0.2777777777777778em;"></span><span class="mrel" style="color:seagreen;">=</span><span class="mspace" style="color:seagreen;margin-right:0.2777777777777778em;"></span><span class="mord mathsf" style="color:seagreen;">67</span></span></span></span></span></span></span></div></figure></div></figure><p id="f4a2c9f2-5168-49bf-a2ef-8ca07044135b" class="">
+</p><p id="f196a32f-9b8e-4f56-b320-0855f4ea34e6" class=""><mark class="highlight-gray">The break-even point for the hot sauce business is 67 units. That number could be lowered by raising prices, and finding ways to lower variable and fixed costs. Once you’re up and running, this is something that can be revisited with monthly recurring costs to understand your monthly break-even point.</mark></p><h3 id="1c71dd33-071d-4e7d-9d42-ed2a13c1e073" class="">4. <strong>Now calculate your break-even point:</strong></h3><p id="cb4d04e1-80ee-4845-8419-827e0d33c7df" class=""><mark class="highlight-gray">You can use the following formula, or fill in the first three cells in the table below.</mark></p><p id="ed4bcc4f-9036-420d-8bdf-f954584271f6" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8b7db953-2dec-42f7-b4cf-7efbb86422e7"><div style="font-size:1.5em"><img class="icon" src="https://super.so/icon/dark/chevron-right.svg"/></div><div style="width:100%"><mark class="highlight-gray"><code>______</code></mark><mark class="highlight-gray"> / (</mark><mark class="highlight-gray"><code>______</code></mark><mark class="highlight-gray"> – </mark><mark class="highlight-gray"><code>______</code></mark><mark class="highlight-gray">) = I need to sell </mark><mark class="highlight-gray"><code>__</code></mark><mark class="highlight-gray"> units to break even.</mark></div></figure><p id="08d92d7f-01db-480a-a411-ea56a5790b00" class="">
+</p><div id="a600ba28-e1b3-41c0-9022-26a58903186a" class="collection-content"><h4 class="collection-title">Break-Even Point</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Item</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Fixed Costs</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Avg Price of Unit</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Variable Costs</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesFormula"><path d="M7.77892,7.06304 L4.62218,11.2875 C4.58556,11.3416 4.55285,11.4392 4.5504,11.5052 C4.5504,11.7022 4.7047,11.8619 4.89562,11.8619 L11.1383,11.8619 C11.6139,11.8619 11.9996,12.2598 11.9996,12.7507 L11.9996,13.1111 C11.9996,13.602 11.6139,14 11.1383,14 L1.861927,14 C1.385853,14 1.00011061,13.602 1.00011061,13.1111 L1.00011061,12.6858 C0.99718092,12.4783 1.0523567,12.3098 1.176868,12.1466 L4.39269,7.79888 C4.74816,7.31841 4.74572,6.65139 4.38683,6.17354 L1.400013,2.19436 C1.27306,2.03028 1.216419,1.85993 1.219349,1.65006 L1.219349,0.888889 C1.219349,0.397968 1.605091,0 2.08117,0 L10.91906,0 C11.3946,0 11.7804,0.397968 11.7804,0.888889 L11.7804,1.24925 C11.7804,1.74017 11.3946,2.13814 10.91906,2.13814 L5.13634,2.13814 C4.94542,2.13814 4.79064,2.29801 4.79064,2.49522 C4.79308,2.56049 4.82482,2.65709 4.86095,2.71087 L7.78038,6.68628 C7.8297,6.74847 7.84435,6.7934 7.84142,6.87363 C7.84435,6.95493 7.82921,7.00048 7.77892,7.06304 Z"></path></svg></span>Break-Even Point</th></tr></thead><tbody><tr id="d0c1ca5b-edf0-4be1-8e40-2c6339150d05"><td class="cell-title"><a href="3%20Building%204db6f225274e40be813e505b8f43c6e6/Break-Even%20Point%20a600ba28e1b341c0902226a58903186a/Sample%20Item%20d0c1ca5bedf04be18e402c6339150d05.html">Sample Item</a></td><td class="cell-b`{Y">$620.00</td><td class="cell-nd|F">$20.00</td><td class="cell-a]Bs">$15.00</td><td class="cell-ITBq">124 Units</td></tr></tbody></table></div></div><div id="3184294e-8ea2-4117-8afe-45f2ccf562c8" style="width:43.75%" class="column"><p id="8b9a9b3e-0bbb-49b6-856b-cfce44a3615a" class="">
+</p><p id="609c1750-c43a-4b47-a64b-94948e2198b7" class="">
+</p><h3 id="2e88e0c0-1f51-41b8-8ff9-14c6ca4b7ca1" class=""><strong>Revenue
+</strong></h3><p id="545780d4-a9fb-4b45-8963-4ac8f640dc8a" class=""><mark class="highlight-gray">The money generated from operating your business before subtracting operating costs.</mark></p><h3 id="eb8bee2e-f200-4857-94ca-8e59a0d8fedf" class=""><strong>Operating costs
+</strong></h3><p id="6837be3b-013c-430f-856a-21c7b27ac37c" class=""><mark class="highlight-gray">The money generated from operating your business before subtracting operating costs.</mark></p><h3 id="e8f42e3f-749c-4407-b0d2-f70e45e2353b" class=""><strong>Profit
+</strong></h3><p id="04c2f99b-a7d3-4cc7-885a-5738c7829008" class=""><mark class="highlight-gray">The money you keep after subtracting your operating costs from your revenue.</mark></p><h3 id="6b1a5d2c-7b34-40a2-b474-d541f9f5174a" class=""><strong>Cost of goods sold (COGS)
+</strong></h3><p id="7cb2858d-3f0d-41ad-87a3-bf78405e44af" class=""><mark class="highlight-gray">The direct expenses involved in the production of the products you’re selling.</mark></p><h3 id="d105ccc6-8af8-4aa2-a9c3-cc55685973d5" class=""><strong>Profit margin
+</strong></h3><p id="e0f7af7b-2528-4a90-b9af-bfc4d18d9de0" class=""><mark class="highlight-gray">Expressed as a percentage, this represents how many cents in profit is generated for each dollar of sales. A 50% profit margin means you’re generating 50 cents for every dollar.</mark></p><h3 id="86005f86-7dcb-4121-9769-fe13350faff9" class=""><strong>Economies of scale
+</strong></h3><p id="badbf065-c3fd-4697-bc6f-b2f5302360f8" class=""><mark class="highlight-gray">A concept that describes the savings you gain as the scale of production increases. In other words, as you produce more products to sell, you can expect your COGS per unit to decrease proportionately.</mark></p><p id="a5e80ae6-e3ba-4e28-82a1-3f0fd967eca1" class="">
+</p><figure class="block-color-orange_background callout" style="white-space:pre-wrap;display:flex" id="a03fe1c9-545e-4bd2-a359-79e3c162c99e"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><mark class="highlight-orange"><strong>Bonus Content: </strong></mark><mark class="highlight-orange">Check out </mark><a href="https://shopify.com/blog/break-even-analysis?utm_source=notion&amp;utm_medium=referral&amp;utm_campaign=bb&amp;utm_content=bae-bb-notion-template"><mark class="highlight-orange">this story on Break-Even Analysis</mark></a><mark class="highlight-orange"> to try out different pricing scenarios and see how quickly you can break even!</mark></div></figure><p id="ac17d33d-3bfc-4efe-be63-ab44f5a4d5ba" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="d7de8e5c-0bb3-4c19-9634-c74988563224"><div style="font-size:1.5em"><span class="icon">⚡</span></div><div style="width:100%"><mark class="highlight-blue"><strong>Hot Tip: </strong></mark><mark class="highlight-blue">As you start your business, prepare to not make a profit right away. Most businesses take a few weeks to a few months to make a profit. Look at this period as an investment for finding your product-market fit.</mark></div></figure></div></div><p id="18768ec5-0f65-4e91-b58b-b81cb7d12832" class="">
+</p><hr id="b542f345-590a-4905-8eaf-5bced6908bac"/><div id="682e02e3-13f5-41e6-9ede-fac9f5168bee" class="column-list"><div id="97e0cc28-0763-4b87-b8dc-a303a040ba96" style="width:50%" class="column"><h1 id="c4b1e8a8-1b3b-4806-bf95-b543eed5599d" class="">1. Build your brand</h1><p id="0680d2b0-419d-403d-abf5-057516fd5d75" class=""><strong>Your brand is how people recognize your business out in the world.</strong></p><p id="f43fa5f9-890f-4aa5-a682-8faa8cbeb636" class="block-color-gray">It’s your logo, your business name, your website, your color palette, and also how you present yourself to the market and speak to your ideal customer. </p><p id="a9552194-ac24-4ab1-9bbe-286e064a0091" class="block-color-gray">So start putting together all the pieces of the brand that will become the embodiment of your business.</p><p id="b4d78e05-41ba-40f1-87a1-959d67fe0167" class="">
+</p><p id="ee55e13b-ec38-4f7a-afbe-7566b3dc0ede" class=""><strong>Your business name
+</strong></p><p id="6536e15b-bf3a-4593-bcd0-4feb50dfac75" class="block-color-gray">Your business name is the most visible feature of your brand. It’ll be part of your website domain, on your packaging, and what people will Google to find you online.</p><p id="3fce4ddd-663f-4023-bdb9-580818106916" class="block-color-gray">It’s also where a lot of people get stuck when starting their business. The perfect business name doesn’t exist, but many exciting, engaging, and effective options do. Here’s a checklist to help you find a name that you can feel good about.</p><p id="0bc1835d-02d3-42a0-adf8-cbe95964c49f" class="">
+</p><h3 id="e0cb62b8-85eb-4274-86c3-d54dd4ceac6a" class="">2. <strong>Business name checklist:</strong></h3><ul id="79f9974c-3898-44df-ab3a-d7beaedb52d5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Is it unique? (<a href="https://www.shopify.com/domains/search-availability">Check possible domains here</a>)</span></li></ul><ul id="a8a169fa-01d8-4fdc-a113-99264ff2bc97" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Is it simple and memorable? Is it easy to pronounce and spell?</span></li></ul><ul id="cc549085-29f2-435a-b234-9682cb150ae0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Is it too specific, preventing you from expanding your product line or pivoting in the future?</span></li></ul><p id="5bec96e3-bcc3-4dfe-a880-dfbee25e958d" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="09955ed0-1862-466f-baee-2d925da3bd71"><div style="font-size:1.5em"><span class="icon">⚡</span></div><div style="width:100%"><mark class="highlight-blue"><strong>Hot Tip: </strong></mark><mark class="highlight-blue">Don’t worry about coming up with the perfect name for your business. You can always revisit your business name if need be. Lean on the following exercise and online resources for inspiration. Check out </mark><a href="https://www.shopify.com/blog/4660242-what-should-i-name-my-online-store?utm_source=notion&amp;utm_medium=referral&amp;utm_campaign=bb&amp;utm_content=bae-bb-notion-template"><mark class="highlight-blue">this guide</mark></a><mark class="highlight-blue"> for ideas and tips.</mark></div></figure></div><div id="16490803-052d-42c2-a892-bb6595d19e9c" style="width:50%" class="column"><p id="c8351432-0103-4ad3-a033-77da49931256" class="">
+</p><h3 id="d5f81903-e3c4-4d02-affa-8b9467836d7b" class="">3. <strong>Feeling stuck? Time to brainstorm!</strong></h3><ol type="1" id="9f69f835-023b-43bb-8d13-63368d1b17e1" class="block-color-gray numbered-list" start="1"><li>Write out nouns that relate to your business.</li></ol><ol type="1" id="e366d000-2703-45c9-b3de-6ec50ecdac72" class="block-color-gray numbered-list" start="2"><li>Write out adjectives that may represent your product or service (words that describe the nouns).</li></ol><ol type="1" id="b57e5b50-71dd-46d9-9599-5889a75ad1df" class="block-color-gray numbered-list" start="3"><li>Try to combine them in interesting ways.</li></ol><p id="c602a0e0-efd7-4ab9-a7f3-252fe0d0c5b6" class="">
+</p><p id="de7c3cb8-903d-4b0e-92b3-d92642345a61" class=""><strong>Here’s an example:
+</strong></p><div id="e247ea9a-fdbe-4dd7-ac50-549a3618ef91" class="column-list"><div id="1d57cb64-39dc-4129-a2cb-f2ed4d132162" style="width:25%" class="column"><p id="37f41d34-9ed3-4a6d-8d7a-57c283b9dc99" class="block-color-teal"><strong>Nouns</strong></p><ul id="7536c317-253a-48e0-b19e-f9f6513637cd" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Pepper</li></ul><ul id="ef90747a-713f-47ec-8330-68e640428ca9" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Chilli</li></ul><ul id="72414dba-a36a-4f63-832c-5c9203f22534" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Heat</li></ul><ul id="5da48d05-86ab-4e50-bfd7-2f0e82468181" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Fire</li></ul><ul id="18c9c17a-9d48-487a-953a-376296886dcd" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Blaze</li></ul><ul id="457aff2a-fee0-47f3-a769-c9b3adb66fb0" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Fruit</li></ul></div><div id="6f0f87e5-2522-400e-ae9d-b0a82103bafc" style="width:25%" class="column"><p id="55dd92c0-8331-426f-98e8-fbecd1b51ba4" class="block-color-teal"><strong>Adjectives</strong></p><ul id="462cb08f-3064-4cc9-909c-c9ffd7a32332" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Spicy</li></ul><ul id="a65ea59e-5014-4f37-876b-514e6bf1cbf4" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Tangy</li></ul><ul id="bd994112-bb77-4590-a685-14ba968319e1" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Hot</li></ul><ul id="5aa53a75-ca37-42e9-8ea3-1a17f8018954" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Savory</li></ul><ul id="02cca447-90eb-4219-a31d-69e01a296861" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Snappy</li></ul><ul id="214384b0-c8fd-41ea-9caf-b9c57c121fdd" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Fiery</li></ul></div><div id="11eb1c90-060c-4c6d-b552-49532f3cd34d" style="width:50.000000000000014%" class="column"><p id="ac79436b-bdc1-4a31-84c1-1ba0355a864b" class="block-color-teal"><strong>Name ideas and combinations</strong></p><ul id="f5b2f770-54ba-426d-9305-4b7863db253f" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Jay’s Spicy Sauce</li></ul><ul id="524a36e7-2f11-4b68-ba65-70dccaf2a6f7" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Snappy Pepper Hot Sauce</li></ul><ul id="f218a09d-6539-4ad4-be16-59013c08d192" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Tangy Jay’s</li></ul><ul id="89fee358-ac60-49ba-b1e4-7f67aabd33ef" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Fiery Fruits &amp; Peppers</li></ul><ul id="2550b650-2136-44d4-b0d5-b5fee768d791" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Fire &amp; Heat</li></ul><ul id="dd79b21b-33e2-4abb-9139-35ba6ebe3970" class="block-color-teal bulleted-list"><li style="list-style-type:disc">Something Savory Hot Sauce</li></ul></div></div><hr id="6d74ff7a-425c-4264-8129-8ebab2ffba66"/><p id="18c11efa-151d-467e-80da-2f515c8f3acc" class=""><strong>Now try it out with your business:
+</strong></p><div id="e9726ff3-2aed-437d-a566-6651bb9a002c" class="column-list"><div id="a6f08f57-63a6-4e9e-89c7-a23367d3f50e" style="width:25%" class="column"><p id="b7933dff-045d-475b-8661-7a5a470c9c56" class=""><strong>Nouns</strong></p><ul id="0bf67442-af2c-49ae-b790-14bd81c8ef80" class="block-color-gray bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="1f50717d-eb78-45aa-b19c-9053672832b2" class="block-color-gray bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="90bb7e38-04de-4b7e-8456-4f8385f2c138" class="block-color-gray bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="6f14ce8c-6cb2-4d14-a29c-bc94107b1a7b" class="block-color-gray bulleted-list"><li style="list-style-type:disc"></li></ul></div><div id="b08287c0-2557-43fa-890a-69865e6fcb27" style="width:25%" class="column"><p id="5bf96cdc-5325-486d-b237-e94f5dae0e4c" class=""><strong>Adjectives</strong></p><ul id="f146a16a-8289-4528-a3b5-98f4deba3d3c" class="block-color-gray bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="6aefb3c1-1bf9-48be-977e-09f354ebb42f" class="block-color-gray bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="6f47b503-1077-48e4-8cf8-3e57b40edc8e" class="block-color-gray bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="4facf390-4ecd-437a-99b9-163245d61363" class="block-color-gray bulleted-list"><li style="list-style-type:disc"></li></ul></div><div id="f6e44c63-d995-4546-a346-354d221cd2e7" style="width:50.000000000000014%" class="column"><p id="5181d768-6c57-4e51-bbcf-700c20f9cbd0" class=""><strong>Name ideas and combinations</strong></p><ul id="97745fed-f3f6-4ffe-9a66-dae6cacf5ee8" class="block-color-gray bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="aa67e5bd-631c-479a-b14c-7ea1630006b6" class="block-color-gray bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="e185c886-a2bd-4f1e-b418-192752eba837" class="block-color-gray bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="5f78aa8a-e702-4b7d-b202-fef82d911695" class="block-color-gray bulleted-list"><li style="list-style-type:disc"></li></ul></div></div><p id="482d996a-f019-43a3-87a7-72b71bffc3db" class="">
+</p><figure class="block-color-orange_background callout" style="white-space:pre-wrap;display:flex" id="6c07edd4-410f-43b5-b553-e95ffc0e42e0"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><mark class="highlight-orange"><strong>Bonus Content: </strong></mark><mark class="highlight-orange">Still having trouble coming up with a name? Take some of your name ideas to the </mark><a href="https://www.shopify.com/tools/business-name-generator?utm_source=notion&amp;utm_medium=referral&amp;utm_campaign=bb&amp;utm_content=bae-bb-notion-template"><mark class="highlight-orange">Shopify Business Name Generator</mark></a><mark class="highlight-orange"> and level up your name game.</mark></div></figure></div></div><p id="404febc6-3cec-4b90-929f-0857b986a787" class="">
+</p><hr id="b2969c8e-a188-4554-b8ee-e4affd8b24ca"/><div id="36580921-3855-4b9f-8b77-9415e27c09a8" class="column-list"><div id="fa902bef-501c-43c9-a245-c1f339f69c45" style="width:43.75%" class="column"><h2 id="299cccb7-6fb2-4bf6-b210-ceb3b63839f0" class="">4. <strong>Your brand’s voice</strong></h2><p id="265285e5-6b88-4204-b359-b3e4362a4e73" class=""><strong>So far, you’ve done the work to establish what your brand </strong><em><strong>looks </strong></em><strong>like. But what about what it </strong><em><strong>sounds </strong></em><strong>like?</strong></p><p id="ab511d1a-ab23-4111-be39-4c893b7de695" class="block-color-gray">When you start marketing, whether it’s writing your website copy or posting on social media, your brand voice helps you stay consistent and resonate more deeply with your ideal customer.</p><p id="7c015582-2cd8-4c24-a027-2584008e81fd" class="block-color-gray">Let’s take our hot sauce brand Tangy Jay’s as an example. It’d be interesting if we gave it a brand voice not nearly as spicy as the sauce itself — a voice that was quite straightforward and witty.</p><p id="cd865691-d778-40b3-8a15-064c5c3bc2c9" class="">
+</p><blockquote id="70cabd06-0c6e-45ac-9582-9a94ad9bd80d" class=""><em>Delicious hot sauce doesn’t need to set your mouth on fire. Tangy Jay’s sells flavorful medium hot sauce that responsible spice-lovers can enjoy every day with their favorite meals. We’re not the world’s hottest hot sauce and we’re proud of it.</em></blockquote><p id="3ec29f0a-fe54-4937-b6d4-d1ff963bb109" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7f3306a5-999c-45b9-ae32-345a82736ca7"><div style="font-size:1.5em"><img class="icon" src="https://super.so/icon/dark/chevron-right.svg"/></div><div style="width:100%"><strong>5.</strong> <strong>To start, pick three adjectives you would use to describe your brand voice:
+</strong><ol type="1" id="dac02dce-389f-42e0-9e92-d97f0612a1bd" class="block-color-gray numbered-list" start="1"><li></li></ol><ol type="1" id="ce34a063-1496-452f-9676-e202ad8df3a0" class="block-color-gray numbered-list" start="2"><li></li></ol><ol type="1" id="08f324e9-8882-4505-ab03-d8532d21a550" class="block-color-gray numbered-list" start="3"><li></li></ol></div></figure><p id="d4a62d4b-2cac-4c06-a2a2-8dc5765d4741" class="">
+</p></div><div id="a246fded-972f-4564-b882-d37f62149b53" style="width:56.25%" class="column"><p id="451cfb9a-68cb-499b-9ec8-484bb417627e" class="">
+</p><p id="7b9a534c-8e62-4464-9c50-ad6f76855aa1" class="">
+</p><p id="e0a75fb7-c913-4540-aae2-44baab5e2942" class=""><strong>Here are some descriptors for inspiration:
+</strong></p><div id="e2b3996d-5864-41a2-9985-302fb40d93cc" class="column-list"><div id="b8a11ee3-02e4-4612-8670-89d840fe879e" style="width:25%" class="column"><ul id="5b22c5aa-86be-4ecf-a834-b398435f5d83" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Bold</li></ul><ul id="600d8c5b-6cec-4141-af1b-88f9ed0cf681" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Creative</li></ul><ul id="77a152f3-c570-4834-8057-5df96724cc2e" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Spontaneous</li></ul><ul id="817cb320-9afd-4581-8973-30aaab92f8f6" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Funny </li></ul><ul id="1b0282d9-3472-46fd-ab3f-c79f83228db8" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Serious</li></ul><ul id="c0f759aa-83e3-4c13-a66b-454098c893ab" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Professional</li></ul><ul id="21aa015a-ef8b-4393-b839-1c631ccfefa7" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Savvy</li></ul><ul id="a3fa2ce5-bc93-4234-b1dc-d35c40d39b29" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Charming</li></ul><ul id="0cd5a92a-9d29-4a23-a4e1-691e3524765c" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Witty</li></ul></div><div id="3b1707e4-58f8-4ada-9f0c-aa8788a4a18c" style="width:25%" class="column"><ul id="2c83900e-7e98-4c30-abd0-24d2410a6a63" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Sarcastic</li></ul><ul id="980a709c-d7b5-46c4-a397-cc2cfcf5552e" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Playful</li></ul><ul id="f7683e22-5a9b-4d49-af8c-df79bb6bad79" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Adventurous</li></ul><ul id="140e156b-c59c-41c7-93e3-faee3802e30a" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Cute</li></ul><ul id="e448a94a-6e42-4ae8-bcba-0203990fc61b" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Motivational</li></ul><ul id="55c26a2d-4469-420d-af4b-400270e6ea53" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Trustworthy</li></ul><ul id="947061d9-3500-4884-868a-c3e9e2087913" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Fiery</li></ul><ul id="95cea3b4-5539-4e02-a560-ba74e70aa9ce" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Ambitious</li></ul><ul id="8f45d123-764f-4f66-b0c8-d7ab579f7305" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Straightforward</li></ul></div><div id="d2e42a1a-55c2-4611-a12e-3b0f4819a1d6" style="width:50.000000000000014%" class="column"><ul id="ea0cc137-b4a6-4721-8c3f-d932d913b8bb" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Sassy</li></ul><ul id="8cb0ae3a-3c5a-4fcc-921e-165e2c205228" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Warm</li></ul><ul id="14c6b78d-ae66-4b25-a52e-4161499ba219" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Empathetic</li></ul><ul id="d89bd090-8a26-4a3b-8315-574428be100b" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Supportive</li></ul><ul id="c45683b7-a8a9-4885-a28e-2d5f4df6fb3c" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Caring</li></ul><ul id="39a42f89-c0c5-4da2-9c8f-6193a5343ae6" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Conversational</li></ul><ul id="f905e75f-dc1d-4801-9ae2-e13b92cea215" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Sophisticated</li></ul><ul id="e4c226c4-106a-49c9-bcb1-8a0a78177714" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Loud</li></ul><ul id="ddc2d1bb-e4bd-4522-aa8a-cb04976e4532" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Energetic</li></ul></div></div><p id="734d2492-1037-4c22-868b-9b3b8dee2a3d" class="">
+</p><hr id="4c38daf0-6ffb-4aa8-8d0a-5abb47e32d4e"/><p id="d24c1fe6-8415-4460-a6fc-0bc7ad442472" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b825c6b2-a698-4150-aa34-7ba9d9f2fb70"><div style="font-size:1.5em"><img class="icon" src="https://super.so/icon/dark/chevron-right.svg"/></div><div style="width:100%"><strong>6. Feeling creative?
+</strong><mark class="highlight-gray">Try selling your own product below using the brand voice you created above:
+
+
+
+</mark><strong>
+</strong></div></figure><p id="c350aa54-4189-4a77-991b-0d8d3d0fbe45" class="">
+</p></div></div><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="19791d9d-d5ac-47b7-8805-ca32fc48193e"><div style="font-size:1.5em"><span class="icon">👏</span></div><div style="width:100%"><mark class="highlight-blue"><strong>Great work! 
+</strong></mark><mark class="highlight-blue">Up next is </mark><mark class="highlight-blue"><a href="4%20Growing%2085de54d6666f4d78821c08e29c9a7008.html"><span class="icon">🌳</span>4: Growing</a></mark><mark class="highlight-blue"> 
+or return to the main dashboard: </mark><mark class="highlight-yellow"><a href="../Shopify%20Business%20Blueprint%205ca5d8dc03e5474f886dbd74df55462f.html"><img class="icon" src="icons8-online-shop-50%201.png"/>Shopify Business Blueprint</a></mark></div></figure><p id="3e0bac9c-d304-4621-9b71-bc14cf9fd977" class="">
+</p><hr id="05ac9272-e873-4fa1-b153-c14394ab348f"/><div id="b0f35b31-1612-4f7d-af52-0d4b34f04660" class="column-list"><div id="8cc81933-0cb2-461c-a72d-98c4d94fb864" style="width:29.166666666666664%" class="column"><p id="ca07c1bd-8d1c-47e0-90ee-22cf1133c6d0" class="">
+</p></div><div id="5a24b034-1d50-4fe3-a949-258bfe8a70bf" style="width:41.666666666666664%" class="column"><h1 id="29a2ad36-4367-4f66-8549-e95479936f5e" class="">Start your business journey with Shopify</h1><p id="3f55412a-d53b-451b-ba45-07e74b116642" class="">Try Shopify for free, and explore all the tools and services you need to start, run, and grow your business.</p><h3 id="14fc4fdb-736f-48f8-954a-e304104a519a" class=""><a href="https://www.shopify.com/?utm_source=notion&amp;utm_medium=referral&amp;utm_campaign=bb&amp;utm_content=bae-bb-notion-template">Start 14-Day Free Trial</a></h3><p id="3d5208eb-e0e6-47c6-868b-dff0d0e4c183" class="">
+</p><p id="22457cd5-be63-4006-9ea0-8545fd78b2b9" class="">Get started building your operating system with Notion - <a href="https://www.notion.so/pages/shopify-notion-startup-partnership">startups may qualify for $1000 in Notion credit</a></p></div><div id="fc665f09-c56f-4423-8081-2635c0d3feaa" style="width:29.166666666666686%" class="column"><p id="519dcad1-5e45-4544-a2b0-c8268d1c2d11" class="">
+</p></div></div><figure id="fd7197cd-6fb4-4b00-8e33-e90c094ae893" class="image"><a href="1%20Planning%20c0aae4f9a9b740b79ee9be079c9c9f23/Shopify.svg"><img style="width:192px" src="1%20Planning%20c0aae4f9a9b740b79ee9be079c9c9f23/Shopify.svg"/></a></figure><figure id="32eb3624-3385-432c-a579-a787b1453754"><div class="source"><a href="https://embed.notionlytics.com/wt/ZXlKd1lXZGxTV1FpT2lKa09XVmtOVEV3WXpWaE4yRTBOak00T0RjME9XWmlaVEkwWWpObVlqVTFaQ0lzSW5kdmNtdHpjR0ZqWlZSeVlXTnJaWEpKWkNJNkltUnJiMHRCY21OTllqbG5VSE53WkZkc1lrRnpJbjA9">https://embed.notionlytics.com/wt/ZXlKd1lXZGxTV1FpT2lKa09XVmtOVEV3WXpWaE4yRTBOak00T0RjME9XWmlaVEkwWWpObVlqVTFaQ0lzSW5kdmNtdHpjR0ZqWlZSeVlXTnJaWEpKWkNJNkltUnJiMHRCY21OTllqbG5VSE53WkZkc1lrRnpJbjA9</a></div></figure></div></article></body></html>
